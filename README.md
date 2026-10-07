@@ -2,10 +2,10 @@
 
 **Team Members:**
 - **Krishna Gupta** (Project Lead & Frontend Developer 1)
-- **Jayesh Sharma** (Frontend Developer 2)
+- **Karan Ramlakhani** (Frontend Developer 2)
 - **Kanishq Chasta** (Backend Developer 1)
-- **Juned Hussain** (Backend Developer 2)
-- **Karan Ramlakhani** (Database & Persistence Engineer)
+- **Jayesh Sharma** (Backend Developer 2)
+- **Juned Hussain** (Database & Persistence Engineer)
 
 This version turns the original major project into a proper
 role-based product: teachers manage content and classes, students
