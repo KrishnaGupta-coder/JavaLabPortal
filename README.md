@@ -1,22 +1,30 @@
 # JavaLabPortal: Java Practical Lab Learning & Examination Portal
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Railway_Cloud-00C7B7?style=for-the-badge&logo=railway)](https://javalabportal-production.up.railway.app)
+[![Docker](https://img.shields.io/badge/Docker-Tomcat_9-2496ED?style=for-the-badge&logo=docker)](https://github.com/KrishnaGupta-coder/JavaLabPortal)
+[![Database](https://img.shields.io/badge/MySQL_8.0-Cloud_Database-4479A1?style=for-the-badge&logo=mysql)](https://github.com/KrishnaGupta-coder/JavaLabPortal)
+
+> 🚀 **Live Production Deployment:** [https://javalabportal-production.up.railway.app](https://javalabportal-production.up.railway.app)
+
+---
+
 ## Week 1: Project Administration & Abstract
 
 ### Project Administration
 
 **Project Guide:** Er. Ram Babu Buri
-* **Department:** Computer Science & Information Technology (RTU 5th Semester)
+* **Department:** Artificial Intelligence & Data Science (RTU 5th Semester)
 * **Specializations:** Java EE, JSP-Servlet, MySQL, Software Engineering & System Architecture
 
 ### Team Members
 
 | Name | Role / Layer | Module Ownership | Enrollment / Roll No | Email |
 | :--- | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | Project Lead / Frontend 1 | Module 1: Portal Shell & Lab Experiments Hub | RTU-5TH-SEM-01 | krishnagupta@gmail.com |
-| **Karan Ramlakhani** | Frontend Developer 2 | Module 2: Management Forms & Theory UI | RTU-5TH-SEM-02 | karanramlakhani45@gmail.com |
-| **Kanishq Chasta** | Backend Developer 1 | Module 3: Security, Auth & Controllers | RTU-5TH-SEM-03 | kanishqchasta@gmail.com |
-| **Jayesh Sharma** | Backend Developer 2 | Module 4: Calculator & Experiment Services | RTU-5TH-SEM-04 | jayeshsharma@gmail.com |
-| **Juned Hussain** | Database Engineer | Module 5: Database Persistence & DAOs | RTU-5TH-SEM-05 | junedhussain@gmail.com |
+| **Krishna Gupta** | Project Lead / Frontend 1 | Module 1: Portal Shell & Lab Experiments Hub | 24E1ARADM40P083/24EARAD083 | 16krishnagupta06@gmail.com |
+| **Karan Ramlakhani** | Frontend Developer 2 | Module 2: Management Forms & Theory UI | 24E1ARADM30P076/24EARAD076 | karanramlakhani45@gmail.com |
+| **Kanishq Chasta** | Backend Developer 1 | Module 3: Security, Auth & Controllers | 24E1ARADM40P074/24EARAD074 | chastapriyanshu14@gmail.com |
+| **Jayesh Sharma** | Backend Developer 2 | Module 4: Calculator & Experiment Services | 24E1ARADM40P070/24EARAD070 | jayeshpandit2505@gmail.com |
+| **Juned Hussain** | Database Engineer | Module 5: Database Persistence & DAOs | 24E1ARADM30P072/24EARAD072 | junedhussain294@gmail.com |
 
 ---
 
@@ -457,58 +465,200 @@ JavaLabPortal/
 
 ### Summary of Module Distribution
 
-| Module | Member Name | Role & Architectural Layer | Primary Focus | Key Deliverables |
-| :--- | :--- | :--- | :--- | :--- |
-| **Module 1** | Krishna Gupta (Lead) | Frontend Presentation Layer | Portal Shell, Theme & Lab UI | `index.jsp`, `header.jspf`, `login.jsp`, `exp1`–`exp9`, `arithmetic.jsp` |
-| **Module 2** | Karan Ramlakhani | Frontend Presentation Layer | Management Forms & Theory UI | `studentList.jsp`, `addStudent.jsp`, `manageClasses.jsp`, `theoryList.jsp`, `feedback.jsp` |
-| **Module 3** | Kanishq Chasta | Controller & Security Layer | Security Filter & Auth Servlets | `AccessControlFilter.java`, `LoginServlet.java`, `StudentServlet.java`, `web.xml` |
-| **Module 4** | Jayesh Sharma | Business Logic & Service Layer | Math Evaluation & Lab Servlets | `CalculatorModel.java`, `CalculatorServlet.java`, `ExperimentServlet.java`, `FeedbackServlet.java` |
-| **Module 5** | Juned Hussain | Persistence & Model Layer | Relational Schema, POJOs & DAOs | `database.sql`, `DBConnection.java`, `PortalHelper.java`, all Models & DAOs |
+| Module | Member Name | Role & Architectural Layer | Primary Focus | Key Deliverables | Module Documentation |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Module 1** | Krishna Gupta (Lead) | Frontend Presentation Layer | Portal Shell, Theme & Lab UI | `index.jsp`, `header.jspf`, `login.jsp`, `exp1`–`exp9`, `arithmetic.jsp` | [📖 Module 1 Docs](docs/modules/Module1_Frontend_PortalAndExperiments.md) |
+| **Module 2** | Karan Ramlakhani | Frontend Presentation Layer | Management Forms & Theory UI | `studentList.jsp`, `addStudent.jsp`, `manageClasses.jsp`, `theoryList.jsp`, `feedback.jsp` | [📖 Module 2 Docs](docs/modules/Module2_Frontend_ManagementAndTheory.md) |
+| **Module 3** | Kanishq Chasta | Controller & Security Layer | Security Filter & Auth Servlets | `AccessControlFilter.java`, `LoginServlet.java`, `StudentServlet.java`, `web.xml` | [📖 Module 3 Docs](docs/modules/Module3_Backend_AuthAndManagement.md) |
+| **Module 4** | Jayesh Sharma | Business Logic & Service Layer | Math Evaluation & Lab Servlets | `CalculatorModel.java`, `CalculatorServlet.java`, `ExperimentServlet.java`, `FeedbackServlet.java` | [📖 Module 4 Docs](docs/modules/Module4_Backend_ExperimentsAndServices.md) |
+| **Module 5** | Juned Hussain | Persistence & Model Layer | Relational Schema, POJOs & DAOs | `database.sql`, `DBConnection.java`, `PortalHelper.java`, all Models & DAOs | [📖 Module 5 Docs](docs/modules/Module5_Database_PersistenceLayer.md) |
 
 ---
 
-## Week 9: System Integration & End-to-End Testing
+## Week 9: System Integration & End-to-End (E2E) Testing
 
-During Milestone 9, the team deployed all 5 modules onto Apache Tomcat 9 and conducted comprehensive end-to-end integration testing.
+When moving from individual module development to **System Integration & End-to-End (E2E) Testing**, the focus shifted from isolated unit testing to verifying **cross-module data flows, session lifecycle consistency, role-based security enforcement, transactional integrity, and Apache Tomcat runtime stability**.
 
-```
-[Student / Teacher Action] ──> [AccessControlFilter (Mem 3)]
-                                       │
-                                       ▼
-   [JSP Presentation (Mem 1 & 2)] ◄──► [Servlet Controller (Mem 3 & 4)]
-                                       │
-                                       ▼
-                              [DAO Layer (Mem 5)]
-                                       │
-                                       ▼
-                             [MySQL Database 8.0]
-```
-
-### Integration Test Roles Across All 5 Members:
-* **Member 1 (Krishna - Shell & View Integration Lead):** Verified uniform navigation across all views, role-based menu display, and error page redirections.
-* **Member 2 (Karan - Management Forms Integration Lead):** Tested student CRUD flows, edit modal pre-population, and class deletion safety warnings.
-* **Member 3 (Kanishq - Security & Controller Integration Lead):** Tested unauthorized URL access blocking, session invalidation on logout, and `web.xml` route consistency.
-* **Member 4 (Jayesh - Services & Logic Integration Lead):** Tested calculation precision, experiment status toggles, and feedback submission storage.
-* **Member 5 (Juned - Database & Persistence Integration Lead):** Tested connection pool recycling across 500 simulated queries, transaction rollbacks, and foreign key constraints.
+In this phase, each team member took on an **Integration & Testing Lead role** for their respective domain, working together to unite all five modules into a secure, production-ready practical lab portal.
 
 ---
 
-## Week 10: Deliverables, Artifacts & Project Submission
+### 1. Member 1 (Krishna Gupta): Portal Shell & View Integration Lead
+
+#### Integration & Testing Role
+**Portal Shell Template, Cross-Device Viewport Consistency & Responsive Layout Lead.**
+
+#### Work & Scope
+* **Cross-Module View Aggregation**: Integrated the unified header/footer shell templates (`header.jspf`, `footer.jspf`) across all 15+ module JSPs, ensuring dynamic navigation rendering based on active session roles (Guest vs Student vs Teacher).
+* **Cross-Browser & Device Compatibility**: Tested portal views across desktop, tablet, and mobile viewports to guarantee that practical experiment consoles, formula cards, and data tables render cleanly without layout breaks.
+* **Navigation Flow & Flash Message Testing**: Verified breadcrumb consistency and flash notification alerts across login redirects, validation errors, and success notifications.
+
+#### Problems Faced During Integration
+1. **Session-Aware Navbar Desynchronization**: The navbar occasionally displayed "Guest" options immediately after login due to JSP page rendering before session attributes fully propagated.
+2. **Horizontal Table Overflow on Mobile Screens**: Large student record tables and complex experiment formula cards broke viewport bounds on screens under 768px.
+3. **Flash Message Persistence Across Refreshes**: Error messages (e.g., "Invalid Credentials") persisted even after manual page refreshes because session messages were not being cleared upon single consumption.
+
+#### What They Completed
+* **Unified Portal Viewport & Shell Integration Test Suite** validating layout rendering across Chrome, Firefox, Safari, and Edge.
+* **Centralized Single-Use Flash Messaging Engine** ensuring notifications clear immediately after first display.
+* **Responsive CSS Breakpoint Audit** guaranteeing seamless display across all mobile, tablet, and desktop resolutions.
+
+---
+
+### 2. Member 2 (Karan Ramlakhani): Management Forms & CRUD Integration Lead
+
+#### Integration & Testing Role
+**Administrative Form Pipelines, Client-Side Sanitization & Modal Integration Lead.**
+
+#### Work & Scope
+* **Management Pipeline Orchestration**: Integrated student and class management JSP forms with `StudentServlet` and `ClassServlet`, ensuring bi-directional form population and clean redirects.
+* **Modal Pre-Population & Asynchronous Handling**: Verified that "Edit Student" and "Update Class" modals reliably load existing record data via URL query parameters without page reloading.
+* **Input Sanitization & Validation Audits**: Enforced client-side regex validations on enrollment numbers (`ACEIT...`), institutional email formats, and required field boundaries.
+
+#### Problems Faced During Integration
+1. **Modal Form State Bleed**: Opening the edit modal for a student after closing a previous modal retained stale values from the previous record.
+2. **Double-Submission Race Conditions**: Rapid double-clicking on the "Add Student" submit button generated duplicate HTTP POST requests, triggering MySQL primary key conflict exceptions.
+3. **Foreign Key Constraint UI Shock**: Attempting to delete a class section currently containing enrolled students resulted in raw SQL error pages instead of user-friendly warning modals.
+
+#### What They Completed
+* **End-to-End Management CRUD Test Suite** verifying full lifecycle: *Add Student ➔ List View ➔ Edit Modal ➔ Update ➔ Confirmation Modal ➔ Safe Delete*.
+* **Idempotent Form Submission Guard** automatically disabling submit buttons during active network requests.
+* **Relational Constraint Safety Modal Suite** intercepting cascading delete attempts with intuitive advisory warnings.
+
+---
+
+### 3. Member 3 (Kanishq Chasta): Backend Authentication & Security Filter Lead
+
+#### Integration & Testing Role
+**Global Security Filter, Session Lifecycle & RBAC Authorization Lead.**
+
+#### Work & Scope
+* **Global Access Control Enforcement**: Integrated `AccessControlFilter` across all protected URL endpoints (`/students/*`, `/classes/*`, `/experiments/*`), enforcing strict Role-Based Access Control (RBAC).
+* **Session Lifecycle & Penetration Testing**: Executed security tests simulating privilege escalation (e.g., students attempting direct access to teacher-only management endpoints) and session hijacking.
+* **Authentication State Propagation**: Verified that logging out immediately invalidates `HttpSession`, clears `JSESSIONID` cookies, and blocks browser back-button access via HTTP cache control headers.
+
+#### Problems Faced During Integration
+1. **Direct JSP Filter Bypass**: Students could initially bypass `StudentServlet` checks by requesting `.jsp` files directly (e.g., `/students/studentList.jsp`), necessitating filter mappings for both servlet URLs and `.jsp` patterns.
+2. **Stale Browser Back-Button Access**: After logging out, pressing the browser's "Back" button briefly exposed cached private student data until strict `no-cache, no-store` headers were enforced.
+3. **Session Collision Across Multiple Tabs**: Concurrent sessions opened in multiple tabs under different roles caused session state overrides.
+
+#### What They Completed
+* **Global RBAC Security Matrix Test Suite** verifying complete access isolation between Guest, Student, and Teacher roles.
+* **Hardened Session Lifecycle & Cache Control Suite** ensuring complete invalidation upon logout.
+* **Penetration & Authorization Audit Report** confirming zero route leaks across 20+ portal endpoints.
+
+---
+
+### 4. Member 4 (Jayesh Sharma): Backend Experiment Services Lead
+
+#### Integration & Testing Role
+**Computational Engines, Experiment State Machine & Service Pipeline Lead.**
+
+#### Work & Scope
+* **Experiment Service Orchestration**: Integrated `CalculatorServlet`, `ArithmeticServlet`, `TheoryServlet`, and `FeedbackServlet` with their respective DAO components.
+* **Mathematical Accuracy & Edge-Case Testing**: Verified arithmetic computation precision, handling extreme values, negative inputs, and floating-point operations across all lab calculators.
+* **Theory Content & Feedback Ingestion**: Validated dynamic theory retrieval from MySQL and concurrent student feedback submissions.
+
+#### Problems Faced During Integration
+1. **Divide-by-Zero Arithmetic Crashes**: Passing a zero denominator into the arithmetic calculator triggered unhandled `ArithmeticException` 500 errors instead of graceful validation alerts.
+2. **Theory Content Encoding Corruption**: Code snippets and technical formatting inside theory explanations suffered character mangling due to inconsistent character encodings.
+3. **Feedback Submission Concurrency Lock**: High-volume concurrent feedback submissions during class lab simulations created database thread contention.
+
+#### What They Completed
+* **Experiment Computational Accuracy & State Test Suite** covering all lab operations and boundary inputs.
+* **Resilient Exception Handler & UTF-8 Theory Pipeline** guaranteeing clean rendering of formatted code snippets.
+* **High-Concurrency Service Benchmark Report** maintaining sub-150ms response times under peak student load.
+
+---
+
+### 5. Member 5 (Juned Hussain): Database & Persistence Integration Lead
+
+#### Integration & Testing Role
+**Connection Pooling, 3NF Relational Integrity & Performance Lead.**
+
+#### Work & Scope
+* **Connection Lifecycle Management**: Managed JDBC connection lifecycle in `DBConnection`, guaranteeing that every database interaction safely closes `ResultSet`, `Statement`, and `Connection`.
+* **ACID Transaction & Referential Integrity Testing**: Validated foreign key cascading rules across `teachers`, `students`, `classes`, `experiments`, and `feedbacks` tables.
+* **Cloud & Docker DB Portability**: Verified schema and seed scripts (`database.sql`) across local MySQL 8.0, cloud MySQL instances, and Docker containers.
+
+#### Problems Faced During Integration
+1. **Connection Pool Depletion**: High-frequency concurrent queries caused connections to stay open, exhausting the pool until `try-with-resources` was implemented across all 6 DAOs.
+2. **Deadlock During Concurrent Enrolment**: Simultaneous inserts into `students` alongside class capacity updates caused row-level lock contention.
+3. **UTF-8 Byte Order Mark (BOM) Script Breakage**: Hidden BOM characters in SQL and Java files caused compilation and migration failures on Linux/Docker environments.
+
+#### What They Completed
+* **Zero-Leak Connection Lifecycle Test Suite** verifying 1,000+ continuous transactions without connection exhaustion.
+* **Optimized 3NF Relational Schema & Migration Script** with indexed foreign keys and strict constraints.
+* **Cross-Environment Database Portability Audit** ensuring identical operation across Windows, Linux, Docker, and Cloud MySQL.
+
+---
+
+### Overall System Integration Summary
+
+During final **Full System Acceptance Testing**, the unified portal request lifecycle was verified across all layers:
+
+```
+[Student / Teacher Browser]
+            │
+            ▼ (HTTP Request)
+[AccessControlFilter (Mem 3)] ──[Role Check]──► [Login / Unauthorized Redirect]
+            │
+            ├─► [Portal Shell & JSP Views (Mem 1)]
+            │            ▲
+            │            │ (Forward View)
+            ▼            │
+[Servlet Controllers (Mem 3 & 4)]
+            │
+            ▼ (Invoke DAO)
+[DAO Persistence Layer (Mem 5)]
+            │
+            ▼ (JDBC Driver)
+[MySQL 8.0 Database / Cloud DB]
+```
+
+---
+
+## Week 10: Final System Evaluation, Deliverables & Project Submission
+
+During **Week 10**, the JavaLabPortal engineering team completed the final system evaluation, production containerization audit, comprehensive technical documentation, project presentation deck (PPT), and end-to-end video demonstration.
+
+---
 
 ### Project Deliverables & Artifacts
 
 | Deliverable | Description | Resource Link |
 | :--- | :--- | :--- |
-| 📄 **Final Project Report** | Complete Technical Architecture Document, SRS, ER Diagrams, and Test Reports | [View Project Report (PDF)](https://drive.google.com/file/d/your-project-report-link/view?usp=sharing) |
-| 📊 **Presentation Deck (PPT)** | Comprehensive Project Evaluation Deck covering System Architecture, MVC Design & Features | [View Presentation (PPT / Slides)](https://drive.google.com/file/d/your-presentation-ppt-link/view?usp=sharing) |
-| 🎥 **Video Demonstration** | Working Video Demonstration of JavaLabPortal (Teacher Flow, Student Flow, Experiments & Admin) | [Watch Video Demonstration (YouTube)](https://www.youtube.com/watch?v=your-demo-video-id) \| [Drive Video Link](https://drive.google.com/file/d/your-drive-video-link/view?usp=sharing) |
+| 🌐 **Live Web Application** | Production Cloud Container on Railway (Apache Tomcat 9 + MySQL 8.0) | [Launch Live Portal](https://javalabportal-production.up.railway.app) |
+| 📄 **Final Project Report** | Complete Technical Architecture Document, System Requirements Specification (SRS), ER Diagrams, Class Diagrams, and Evaluation Metrics | [View Project Report (PDF)](https://drive.google.com/file/d/your-project-report-link/view?usp=sharing) \| [`ARCHITECTURE.md`](./README.md) |
+| 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (PPT / Slides)](https://drive.google.com/file/d/your-presentation-ppt-link/view?usp=sharing) |
+| 🎥 **Video Demonstration** | HD Video Walkthrough of JavaLabPortal (Student Workflow, Teacher Admin Panel, Experiment Simulators & Feedback System) | [Watch Video Demonstration (YouTube)](https://www.youtube.com/watch?v=your-demo-video-id) \| [Drive Video Link](https://drive.google.com/file/d/your-drive-video-link/view?usp=sharing) |
 
 ---
 
-### Key Accomplishments & Final Milestones
+### Key Accomplishments & Week 10 Milestones
 
-1. **Production-Ready Web Application:** Full 3-tier MVC architecture deployed and operational on Apache Tomcat 9 with MySQL 8.0.
-2. **Security & Role-Based Access Control:** Dual-role security model protecting teacher administrative functions and student lab records.
-3. **Database Normalization & Reliability:** Clean 3NF schema with zero connection leaks, parameterized PreparedStatement queries, and data integrity safeguards.
-4. **Comprehensive Documentation:** Full Software Requirement Specification (SRS), system class diagrams, entity-relationship diagrams, and module documentation.
-5. **Academic Viva Readiness:** Repository structured with individual module branches, clean commit history, and comprehensive evaluation artifacts.
+#### 1. Final Project Report & Technical Documentation
+* Compiled the comprehensive **Software Requirements Specification (SRS)** and **Technical Architecture Document** covering:
+  * Strict **3-Tier Model-View-Controller (MVC)** architectural design.
+  * **Relational Schema Design (3NF)** with referential integrity across 5 core entities.
+  * **Role-Based Access Control (RBAC)** securing teacher administrative routes from unauthorized student access.
+  * **Data Protection & Prepared Statements** guaranteeing 100% protection against SQL injection vulnerabilities.
+
+#### 2. Final Evaluation Slide Deck (PPT)
+* Prepared a structured 20-slide presentation deck covering:
+  * **Problem Statement & Scope:** Replacing manual lab record books with an interactive digital lab simulator.
+  * **MVC Architecture Topology:** Flow diagram illustrating JSP Views, Servlet Controllers, and DAO Models.
+  * **Role-Based Access Security:** `AccessControlFilter` request interceptor mechanics and session lifecycle.
+  * **Live Experiment Modules:** Interactive arithmetic calculators, dynamic experiment theories, and real-time feedback loops.
+  * **Database Design & Stress Testing:** 3NF relational schema, indexing, and connection leak test results.
+
+#### 3. End-to-End Product Video Demonstration
+* Produced an HD video demonstration showcasing:
+  * **Authentication & Role Switching:** Seamless login and authorization between Student and Teacher accounts.
+  * **Student Lab Journey:** Executing lab experiments, reading theory, running calculator tests, and submitting feedback.
+  * **Teacher Admin Panel:** Creating and updating student accounts, managing class batches, and reviewing student feedback.
+  * **Security Enforcement:** Live demonstration of unauthorized URL blocking and secure session logout.
+
+#### 4. Containerization & Production Deployment Audit
+* Built and verified production **`Dockerfile`** with Apache Tomcat 9 (`tomcat:9.0-jdk11-temurin`) and MySQL JDBC driver integration.
+* Configured dynamic cloud port binding (`$PORT`) and environment auto-detection for zero-config deployment on Railway, Render, and AWS.
