@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
  * Developed by: Krishna Gupta, Jayesh Sharma, Kanishq Chasta, Juned Hussain, Karan Ramlakhani
  * Module: Domain Model
