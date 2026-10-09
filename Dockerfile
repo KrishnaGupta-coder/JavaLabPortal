@@ -1,5 +1,6 @@
 # Production Dockerfile for Java Lab Portal (RTU 5th Sem)
-FROM tomcat:9.0-jdk11-temurin
+# Using Amazon Public ECR mirror to eliminate Docker Hub 429 rate limit errors
+FROM public.ecr.aws/docker/library/tomcat:9-jdk11
 
 LABEL maintainer="Krishna Gupta <krishnagupta@aceit.ac.in>"
 LABEL project="Java Lab Portal - RTU 5th Sem Practical Lab"
