@@ -1,13 +1,25 @@
-# Module 2: Frontend - " Management, Theory & Feedback UI
+# Module 2: Frontend — Management, Theory & Feedback UI
 
-**Team Role:** Karan Ramlakhani - Member 2 (Frontend Developer 2)
-**Layer:** View (Presentation Layer - " MVC)
-**Technologies:** JSP, HTML5, CSS3, JavaScript (Form validation & DOM)
+**Team Role:** Karan Ramlakhani — Member 2 (Frontend Developer 2)  
+**Layer:** View (Presentation Layer — MVC Architecture)  
+**Technologies:** JSP, HTML5, CSS3, DOM Scripting, Modal Dialogs  
 
 ---
 
 ## 1. Overview & Responsibilities
-This module covers all administrative data-entry forms, management tables, content delivery layouts, and the interactive student feedback interface. - **Student Management Interface:** Developed all views for full Student CRUD operations: - `students/studentList.jsp` - " Responsive tabular listing of students with class filters, search query parameters, and edit/delete action triggers. - `students/addStudent.jsp` - " Form to register new students with dynamic class dropdown selection and RTU Roll Number validation. - `students/updateStudent.jsp` - " Prefilled edit form for updating existing student details and class assignments. - **Class Section Management:** Created `classes/manageClasses.jsp` allowing teachers to create new branches/sections (`AI&DS-A`, `CS-A`, `IT`, etc.) and delete empty classes with confirmation dialogs. - **Theory & Study Material Views:** - `theory/theoryList.jsp` - " Clean article-style reader layout displaying published lecture and lab theory notes with timestamp chips. - `theory/addTheory.jsp` - " Teacher publishing form with multi-line text input and validation for adding new course material. - **Dynamic Experiment Creation UI:** `experiments/addExperiment.jsp` - " Administrative interface for teachers to expand the lab catalog with custom titles, descriptions, and code snippets. - **Feedback System UI:** - `feedback.jsp` - " Student submission form with interactive 1-5 star rating selector, course selection, and text review area. - `feedbackList.jsp` - " Tabular summary of all student reviews and rating badges.
+This module is responsible for the administrative management interfaces, dynamic theory viewing workflows, and the interactive student feedback submission system.
+
+* **Student & Class Management Interfaces:**
+  * Developed `studentList.jsp` with responsive data tables, search filters, and contextual actions.
+  * Created `addStudent.jsp` with client-side form validation and class section dropdown binding.
+  * Implemented `updateStudent.jsp` with pre-filled form fields for updating existing student details.
+  * Designed `manageClasses.jsp` for managing academic sections, batch capacity, and student allocations.
+* **Study Material & Theory Content UI:**
+  * Built `theoryList.jsp` to display categorized lab manuals, algorithms, and code examples.
+  * Created `addTheory.jsp` enabling teachers to author and publish custom experiment theory.
+* **Feedback System UI:**
+  * Implemented `feedback.jsp` with a 5-star rating interface and structured text inputs for student course reviews.
+  * Developed `feedbackList.jsp` displaying aggregated ratings and student feedback submissions.
 
 ---
 
@@ -15,25 +27,33 @@ This module covers all administrative data-entry forms, management tables, conte
 
 | File Path | Description |
 |---|---|
-| `WebContent/students/studentList.jsp` | Student records table with search, class badges, and action buttons |
-| `WebContent/students/addStudent.jsp` | New student registration form with class selection |
-| `WebContent/students/updateStudent.jsp` | Pre-populated student modification form |
-| `WebContent/classes/manageClasses.jsp` | Section creation and deletion management page |
-| `WebContent/theory/theoryList.jsp` | Study material feed displaying published notes |
-| `WebContent/theory/addTheory.jsp` | Teacher publishing interface for adding study notes |
-| `WebContent/experiments/addExperiment.jsp` | Form for teacher to dynamically register custom experiments |
-| `WebContent/feedback.jsp` | Student feedback submission form with rating stars |
-| `WebContent/feedbackList.jsp` | Feedback responses list with rating badges and timestamps |
+| `src/main/webapp/students/studentList.jsp` | Student directory with search, filter, and action controls |
+| `src/main/webapp/students/addStudent.jsp` | Student registration form with roll number validation |
+| `src/main/webapp/students/updateStudent.jsp` | Student profile update interface with pre-populated values |
+| `src/main/webapp/classes/manageClasses.jsp` | Academic section and class batch management dashboard |
+| `src/main/webapp/theory/theoryList.jsp` | Study material library displaying lab syllabus manuals |
+| `src/main/webapp/theory/addTheory.jsp` | Teacher publishing interface for adding custom experiment theory |
+| `src/main/webapp/feedback.jsp` | Interactive student lab review submission interface |
+| `src/main/webapp/feedbackList.jsp` | Administrative feedback viewing and rating summary table |
 
 ---
 
-## 3. Integration with Other Team Members - **With Member 3 (Backend 1):** `studentList.jsp`, `addStudent.jsp`, and `updateStudent.jsp` submit requests to and render data dispatched by `StudentServlet.java`; `manageClasses.jsp` interacts with `ClassServlet.java`. - **With Member 4 (Backend 2):** `theoryList.jsp` and `addTheory.jsp` interact with `TheoryServlet.java`; `addExperiment.jsp` posts to `ExperimentServlet.java`; `feedback.jsp` and `feedbackList.jsp` communicate with `FeedbackServlet.java`. - **With Member 1 (Frontend 1):** Reuses the common `header.jspf` and `footer.jspf` layout for consistent aesthetics, CSS utility classes, and breadcrumbs.
+## 3. Cross-Module Integration Contracts
+
+* **Integration with Member 3 (Backend 1 — Management Controllers):**
+  * Student management views (`studentList.jsp`, `addStudent.jsp`, `updateStudent.jsp`) communicate directly with `StudentServlet.java` via query parameters and form submissions.
+  * `manageClasses.jsp` dispatches section creation and deletion commands to `ClassServlet.java`.
+* **Integration with Member 4 (Backend 2 — Services):**
+  * `theoryList.jsp` and `addTheory.jsp` route content requests through `TheoryServlet.java`.
+  * `feedback.jsp` dispatches ratings and student reviews to `FeedbackServlet.java`.
 
 ---
 
-## 4. Demo / Viva Talking Points
-1. *"I developed all the data-driven presentation screens, including the student administration dashboard, class manager, theory content reader, and the feedback system."*
-2. *"I designed user-friendly form controls such as prefilled update forms, dropdown select lists populated from backend models, and star rating widgets."*
-3. *"The views cleanly separate presentation from business logic using JSTL and JSP EL expressions to render lists sent by the controller servlets."*
+## 4. Technical Architecture & Engineering Highlights
 
-
+* **Idempotent Form Submissions & Client-Side Guard Rails:**
+  * Implemented form submission locks to eliminate duplicate HTTP POST requests, safeguarding database integrity against accidental multi-clicks.
+* **Asynchronous Modal Pre-Population:**
+  * Streamlined administrative CRUD workflows by pre-loading student and section entities directly into update dialogs using standardized request-scope attributes.
+* **Defensive Relational Deletion Warnings:**
+  * Engineered front-end safety intercepts that alert administrators before initiating cascading class section deletions.
