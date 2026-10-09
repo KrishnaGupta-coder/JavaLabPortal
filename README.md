@@ -5,7 +5,7 @@
 ### Project Administration
 
 **Project Guide:** Er. Ram Babu Buri
-* **Department:** Computer Science & Information Technology (RTU 5th Semester)
+* **Department:** Artificial Intelligence & Data Science (RTU 5th Semester)
 * **Specializations:** Java EE, JSP-Servlet, MySQL, Software Engineering & System Architecture
 
 ### Team Members
