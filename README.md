@@ -465,13 +465,13 @@ JavaLabPortal/
 
 ### Summary of Module Distribution
 
-| Module | Member Name | Role & Architectural Layer | Primary Focus | Key Deliverables |
-| :--- | :--- | :--- | :--- | :--- |
-| **Module 1** | Krishna Gupta (Lead) | Frontend Presentation Layer | Portal Shell, Theme & Lab UI | `index.jsp`, `header.jspf`, `login.jsp`, `exp1`–`exp9`, `arithmetic.jsp` |
-| **Module 2** | Karan Ramlakhani | Frontend Presentation Layer | Management Forms & Theory UI | `studentList.jsp`, `addStudent.jsp`, `manageClasses.jsp`, `theoryList.jsp`, `feedback.jsp` |
-| **Module 3** | Kanishq Chasta | Controller & Security Layer | Security Filter & Auth Servlets | `AccessControlFilter.java`, `LoginServlet.java`, `StudentServlet.java`, `web.xml` |
-| **Module 4** | Jayesh Sharma | Business Logic & Service Layer | Math Evaluation & Lab Servlets | `CalculatorModel.java`, `CalculatorServlet.java`, `ExperimentServlet.java`, `FeedbackServlet.java` |
-| **Module 5** | Juned Hussain | Persistence & Model Layer | Relational Schema, POJOs & DAOs | `database.sql`, `DBConnection.java`, `PortalHelper.java`, all Models & DAOs |
+| Module | Member Name | Role & Architectural Layer | Primary Focus | Key Deliverables | Module Documentation |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Module 1** | Krishna Gupta (Lead) | Frontend Presentation Layer | Portal Shell, Theme & Lab UI | `index.jsp`, `header.jspf`, `login.jsp`, `exp1`–`exp9`, `arithmetic.jsp` | [📖 Module 1 Docs](docs/modules/Module1_Frontend_PortalAndExperiments.md) |
+| **Module 2** | Karan Ramlakhani | Frontend Presentation Layer | Management Forms & Theory UI | `studentList.jsp`, `addStudent.jsp`, `manageClasses.jsp`, `theoryList.jsp`, `feedback.jsp` | [📖 Module 2 Docs](docs/modules/Module2_Frontend_ManagementAndTheory.md) |
+| **Module 3** | Kanishq Chasta | Controller & Security Layer | Security Filter & Auth Servlets | `AccessControlFilter.java`, `LoginServlet.java`, `StudentServlet.java`, `web.xml` | [📖 Module 3 Docs](docs/modules/Module3_Backend_AuthAndManagement.md) |
+| **Module 4** | Jayesh Sharma | Business Logic & Service Layer | Math Evaluation & Lab Servlets | `CalculatorModel.java`, `CalculatorServlet.java`, `ExperimentServlet.java`, `FeedbackServlet.java` | [📖 Module 4 Docs](docs/modules/Module4_Backend_ExperimentsAndServices.md) |
+| **Module 5** | Juned Hussain | Persistence & Model Layer | Relational Schema, POJOs & DAOs | `database.sql`, `DBConnection.java`, `PortalHelper.java`, all Models & DAOs | [📖 Module 5 Docs](docs/modules/Module5_Database_PersistenceLayer.md) |
 
 ---
 
