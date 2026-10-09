@@ -1,5 +1,13 @@
 # JavaLabPortal: Java Practical Lab Learning & Examination Portal
 
+[![Live Demo](https://img.shields.io/badge/Live_Demo-Railway_Cloud-00C7B7?style=for-the-badge&logo=railway)](https://javalabportal-production.up.railway.app)
+[![Docker](https://img.shields.io/badge/Docker-Tomcat_9-2496ED?style=for-the-badge&logo=docker)](https://github.com/KrishnaGupta-coder/JavaLabPortal)
+[![Database](https://img.shields.io/badge/MySQL_8.0-Cloud_Database-4479A1?style=for-the-badge&logo=mysql)](https://github.com/KrishnaGupta-coder/JavaLabPortal)
+
+> 🚀 **Live Production Deployment:** [https://javalabportal-production.up.railway.app](https://javalabportal-production.up.railway.app)
+
+---
+
 ## Week 1: Project Administration & Abstract
 
 ### Project Administration
@@ -620,6 +628,7 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
 
 | Deliverable | Description | Resource Link |
 | :--- | :--- | :--- |
+| 🌐 **Live Web Application** | Production Cloud Container on Railway (Apache Tomcat 9 + MySQL 8.0) | [Launch Live Portal](https://javalabportal-production.up.railway.app) |
 | 📄 **Final Project Report** | Complete Technical Architecture Document, System Requirements Specification (SRS), ER Diagrams, Class Diagrams, and Evaluation Metrics | [View Project Report (PDF)](https://drive.google.com/file/d/your-project-report-link/view?usp=sharing) \| [`ARCHITECTURE.md`](./README.md) |
 | 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (PPT / Slides)](https://drive.google.com/file/d/your-presentation-ppt-link/view?usp=sharing) |
 | 🎥 **Video Demonstration** | HD Video Walkthrough of JavaLabPortal (Student Workflow, Teacher Admin Panel, Experiment Simulators & Feedback System) | [Watch Video Demonstration (YouTube)](https://www.youtube.com/watch?v=your-demo-video-id) \| [Drive Video Link](https://drive.google.com/file/d/your-drive-video-link/view?usp=sharing) |
