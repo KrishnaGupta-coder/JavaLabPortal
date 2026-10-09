@@ -304,6 +304,13 @@ erDiagram
 ### Project Directory Structure
 ```text
 JavaLabPortal/
+|-- docs/
+|   \-- modules/
+|       |-- Module1_Frontend_PortalAndExperiments.md
+|       |-- Module2_Frontend_ManagementAndTheory.md
+|       |-- Module3_Backend_AuthAndManagement.md
+|       |-- Module4_Backend_ExperimentsAndServices.md
+|       \-- Module5_Database_PersistenceLayer.md
 |-- src/main/java/com/javalab/
 |   |-- calc/
 |   |   \-- CalculatorModel.java
@@ -351,6 +358,8 @@ JavaLabPortal/
 |   |-- feedback.jsp, feedbackList.jsp
 |   |-- footer.jspf, header.jspf
 |   |-- index.jsp, login.jsp
+|-- .dockerignore
+|-- Dockerfile
 |-- database.sql
 \-- README.md
 ```
