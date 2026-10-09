@@ -1,0 +1,7 @@
+.git
+.gitignore
+.settings
+.classpath
+.project
+build/
+*.md
