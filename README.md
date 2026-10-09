@@ -12,11 +12,11 @@
 
 | Name | Role / Layer | Module Ownership | Enrollment / Roll No | Email |
 | :--- | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | Project Lead / Frontend 1 | Module 1: Portal Shell & Lab Experiments Hub | RTU-5TH-SEM-01 | krishnagupta@gmail.com |
-| **Karan Ramlakhani** | Frontend Developer 2 | Module 2: Management Forms & Theory UI | RTU-5TH-SEM-02 | karanramlakhani45@gmail.com |
-| **Kanishq Chasta** | Backend Developer 1 | Module 3: Security, Auth & Controllers | RTU-5TH-SEM-03 | kanishqchasta@gmail.com |
-| **Jayesh Sharma** | Backend Developer 2 | Module 4: Calculator & Experiment Services | RTU-5TH-SEM-04 | jayeshsharma@gmail.com |
-| **Juned Hussain** | Database Engineer | Module 5: Database Persistence & DAOs | RTU-5TH-SEM-05 | junedhussain@gmail.com |
+| **Krishna Gupta** | Project Lead / Frontend 1 | Module 1: Portal Shell & Lab Experiments Hub | 24E1ARADM40P083/24EARAD083 | 16krishnagupta06@gmail.com |
+| **Karan Ramlakhani** | Frontend Developer 2 | Module 2: Management Forms & Theory UI | 24E1ARADM30P076/24EARAD076 | karanramlakhani45@gmail.com |
+| **Kanishq Chasta** | Backend Developer 1 | Module 3: Security, Auth & Controllers | 24E1ARADM40P074/24EARAD074 | chastapriyanshu14@gmail.com |
+| **Jayesh Sharma** | Backend Developer 2 | Module 4: Calculator & Experiment Services | 24E1ARADM40P070/24EARAD070 | jayeshpandit2505@gmail.com |
+| **Juned Hussain** | Database Engineer | Module 5: Database Persistence & DAOs | 24E1ARADM30P072/24EARAD072 | junedhussain294@gmail.com |
 
 ---
 
