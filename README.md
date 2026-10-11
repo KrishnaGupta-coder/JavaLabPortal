@@ -48,7 +48,7 @@ JavaLabPortal enforces strict Role-Based Access Control (RBAC) at the servlet co
 ---
 
 ### SRS Document
-* You can access the complete [Project SRS Document (PDF)](https://drive.google.com/file/d/1PrVvywvVTfCrP3DCIybiMRH7GAvBiVR4/view?usp=sharing) | [View in Repository (PDF)](docs/JavaLabPortal_SRS.pdf).
+* You can access the complete [Project SRS Document (PDF)](https://drive.google.com/file/d/1PrVvywvVTfCrP3DCIybiMRH7GAvBiVR4/view?usp=sharing).
 
 ---
 
@@ -635,12 +635,12 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
 
 ### Project Deliverables & Artifacts
 
-| Deliverable | Description | Resource Links |
+| Deliverable | Description | Resource Link |
 | :--- | :--- | :--- |
 | 🌐 **Live Web Application** | Production Cloud Container on Railway (Apache Tomcat 9 + MySQL 8.0) | [Launch Live Portal](https://javalabportal-production.up.railway.app) |
-| 📄 **Final Project Report** | Comprehensive B.Tech Project Report covering Project Overview, Literature Survey, System Design, Implementation, Testing Results, and Conclusion | [View on Drive (PDF)](https://drive.google.com/file/d/1uKg6H8RLfPDOdjz9TgR-_LV6oGCSaM8b/view?usp=sharing) \| [View in Repo (PDF)](docs/JavaLabPortal_Project_Report.pdf) |
-| 📑 **IEEE Research Paper** | Scholarly IEEE Research Paper covering Literature Gap Analysis (38 Papers), 3-Tier MVC Architecture, Concurrency Benchmarks & SUS Usability Evaluation | [View on Drive (PDF)](https://drive.google.com/file/d/1n4yjgoqvqT66Llvaa7mB8FnxWfuevuf8/view?usp=sharing) \| [View in Repo (PDF)](docs/JavaLabPortal_Research_Paper.pdf) |
-| 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View on Drive (Slides)](https://drive.google.com/file/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/view?usp=sharing) \| [Download .PPTX](https://docs.google.com/presentation/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/export/pptx) \| [View in Repo (.PPTX)](docs/JavaLabPortal_Presentation.pptx) |
+| 📄 **Final Project Report** | Comprehensive B.Tech Project Report covering Project Overview, Literature Survey, System Design, Implementation, Testing Results, and Conclusion | [View Project Report (PDF)](https://drive.google.com/file/d/1uKg6H8RLfPDOdjz9TgR-_LV6oGCSaM8b/view?usp=sharing) |
+| 📑 **IEEE Research Paper** | Scholarly IEEE Research Paper covering Literature Gap Analysis (38 Papers), 3-Tier MVC Architecture, Concurrency Benchmarks & SUS Usability Evaluation | [View Research Paper (PDF)](https://drive.google.com/file/d/1n4yjgoqvqT66Llvaa7mB8FnxWfuevuf8/view?usp=sharing) |
+| 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (Slides)](https://drive.google.com/file/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/view?usp=sharing) \| [Download .PPTX](https://docs.google.com/presentation/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/export/pptx) |
 | 🎥 **Video Demonstration** | HD Video Walkthrough of JavaLabPortal (Student Workflow, Teacher Admin Panel, Experiment Simulators & Feedback System) | [Watch Video Demonstration (YouTube)](https://www.youtube.com/watch?v=your-demo-video-id) |
 
 ---
