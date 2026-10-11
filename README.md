@@ -48,7 +48,7 @@ JavaLabPortal enforces strict Role-Based Access Control (RBAC) at the servlet co
 ---
 
 ### SRS Document
-* You can access the complete [Project SRS Document (PDF)](https://drive.google.com/file/d/1alGu-nv-2Wy8eA1DWSNTQ1HZFMAnrvGV/view?usp=sharing).
+* You can access the complete [Project SRS Document (PDF)](https://drive.google.com/file/d/1PrVvywvVTfCrP3DCIybiMRH7GAvBiVR4/view?usp=sharing).
 
 ---
 
