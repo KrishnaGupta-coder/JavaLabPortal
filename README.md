@@ -48,7 +48,7 @@ JavaLabPortal enforces strict Role-Based Access Control (RBAC) at the servlet co
 ---
 
 ### SRS Document
-* You can access the complete [Project SRS Document (PDF)](https://drive.google.com/file/d/1PrVvywvVTfCrP3DCIybiMRH7GAvBiVR4/view?usp=sharing).
+* You can access the complete [Project SRS Document (PDF)](https://drive.google.com/file/d/1PrVvywvVTfCrP3DCIybiMRH7GAvBiVR4/view?usp=sharing) | [View in Repository (PDF)](docs/JavaLabPortal_SRS.pdf).
 
 ---
 
@@ -635,11 +635,12 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
 
 ### Project Deliverables & Artifacts
 
-| Deliverable | Description | Resource Link |
+| Deliverable | Description | Resource Links |
 | :--- | :--- | :--- |
 | 🌐 **Live Web Application** | Production Cloud Container on Railway (Apache Tomcat 9 + MySQL 8.0) | [Launch Live Portal](https://javalabportal-production.up.railway.app) |
-| 📄 **Final Project Report** | Comprehensive B.Tech Project Report covering Project Overview, Literature Survey, System Design, Implementation, Testing Results, and Conclusion | [View Project Report (PDF)](https://drive.google.com/file/d/1uKg6H8RLfPDOdjz9TgR-_LV6oGCSaM8b/view?usp=sharing) |
-| 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (Slides)](https://drive.google.com/file/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/view?usp=sharing) \| [Download .PPTX](https://docs.google.com/presentation/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/export/pptx) |
+| 📄 **Final Project Report** | Comprehensive B.Tech Project Report covering Project Overview, Literature Survey, System Design, Implementation, Testing Results, and Conclusion | [View on Drive (PDF)](https://drive.google.com/file/d/1uKg6H8RLfPDOdjz9TgR-_LV6oGCSaM8b/view?usp=sharing) \| [View in Repo (PDF)](docs/JavaLabPortal_Project_Report.pdf) |
+| 📑 **IEEE Research Paper** | Scholarly IEEE Research Paper covering Literature Gap Analysis (38 Papers), 3-Tier MVC Architecture, Concurrency Benchmarks & SUS Usability Evaluation | [View on Drive (PDF)](https://drive.google.com/file/d/1n4yjgoqvqT66Llvaa7mB8FnxWfuevuf8/view?usp=sharing) \| [View in Repo (PDF)](docs/JavaLabPortal_Research_Paper.pdf) |
+| 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View on Drive (Slides)](https://drive.google.com/file/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/view?usp=sharing) \| [Download .PPTX](https://docs.google.com/presentation/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/export/pptx) \| [View in Repo (.PPTX)](docs/JavaLabPortal_Presentation.pptx) |
 | 🎥 **Video Demonstration** | HD Video Walkthrough of JavaLabPortal (Student Workflow, Teacher Admin Panel, Experiment Simulators & Feedback System) | [Watch Video Demonstration (YouTube)](https://www.youtube.com/watch?v=your-demo-video-id) |
 
 ---
@@ -668,6 +669,12 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
   * **Teacher Admin Panel:** Creating and updating student accounts, managing class batches, and reviewing student feedback.
   * **Security Enforcement:** Live demonstration of unauthorized URL blocking and secure session logout.
 
-#### 4. Containerization & Production Deployment Audit
+#### 4. Peer-Reviewed IEEE Research Paper
+* Authored the full-length IEEE research paper titled **"JavaLabPortal: An Enterprise 3-Tier Web-Based Practical Learning, Laboratory Automation, and Examination Platform for Advanced Java Education"**:
+  * **Exhaustive Literature Base:** Systematic survey of 38 peer-reviewed research papers across virtual labs, automated grading tools, and educational web security.
+  * **Literature Gap Analysis:** Formally identified and solved 5 persistent research gaps in existing systems (simulation/lifecycle disconnect, cloud cost barriers, exam malpractice vulnerabilities, lack of defense-in-depth, and latent feedback).
+  * **Empirical Benchmarks:** Documented sub-150 ms response latencies under 100 concurrent threads and achieved an exceptional System Usability Scale (SUS) score of **86.4** ("Grade A").
+
+#### 5. Containerization & Production Deployment Audit
 * Built and verified production **`Dockerfile`** with Apache Tomcat 9 (`tomcat:9.0-jdk11-temurin`) and MySQL JDBC driver integration.
 * Configured dynamic cloud port binding (`$PORT`) and environment auto-detection for zero-config deployment on Railway, Render, and AWS.
