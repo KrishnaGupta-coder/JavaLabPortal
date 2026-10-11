@@ -292,10 +292,39 @@ erDiagram
 
 ---
 
-### 2. User Interface (UI) Mock-ups
-* **Portal Dashboard & Navigation Shell (`index.jsp`):** Hero section with academic details and quick access cards to Lab Experiments, Theory Syllabus, and Calculator.
-* **Teacher Administration Center (`manageClasses.jsp` & `studentList.jsp`):** Responsive tables with search, edit, delete modals, and batch allocation.
-* **Interactive Lab Hub (`experiments.jsp` & `arithmetic.jsp`):** Unit-wise syllabus view with interactive Swing previews and live arithmetic evaluator.
+### 2. User Interface (UI) Mock-ups & Production Screenshots
+
+The JavaLabPortal web frontend is crafted using accessible HTML5, custom Bootstrap 5 design tokens, and responsive layout containers to provide distinct, role-tailored workspaces for Students and Faculty.
+
+#### A. Secure Authentication & Role Selection (`login.jsp`)
+* Centered authentication modal featuring tabbed role switching (**Teacher** vs. **Student**), session status notifications, and clean credential input forms.
+<p align="center">
+  <img src="docs/screenshots/ui_login.png" alt="Portal Login Screen" width="85%" />
+</p>
+
+#### B. Teacher Administration Command Dashboard (`index.jsp`)
+* Master faculty portal featuring authenticated user telemetry (`Krishna Gupta TEACHER`), administrative navigation links, and modular shortcuts for student management, class batches, theory authoring, and experiment deployment.
+<p align="center">
+  <img src="docs/screenshots/ui_teacher_dashboard.png" alt="Teacher Administration Dashboard" width="95%" />
+</p>
+
+#### C. Student Self-Service Workspace (`index.jsp`)
+* Role-restricted student interface displaying enrolled batch metadata (`Krishna Gupta STUDENT - AI&DS A`), direct access to practical lab exercises, faculty study material, and online feedback forms.
+<p align="center">
+  <img src="docs/screenshots/ui_student_dashboard.png" alt="Student Self-Service Workspace" width="95%" />
+</p>
+
+#### D. Class Administration & Batch Allocation (`manageClasses.jsp`)
+* Real-time section management console enabling instructors to define departmental divisions (`AI&DS-A`, `AI&DS-B`, `CS-A`, `CS-B`, `IT`) before allocating student enrollments.
+<p align="center">
+  <img src="docs/screenshots/ui_manage_classes.png" alt="Manage Classes Center" width="85%" />
+</p>
+
+#### E. Interactive Lab Experiments Catalog (`experiments.jsp`)
+* Comprehensive laboratory catalog presenting all RTU Advance Java practicals with live execution badges (`LIVE HERE`), syllabus-mapped descriptions, and interactive browser execution triggers (`Try it live`).
+<p align="center">
+  <img src="docs/screenshots/ui_lab_experiments.png" alt="Lab Experiments Hub" width="85%" />
+</p>
 
 ---
 
