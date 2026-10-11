@@ -639,7 +639,7 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
 | :--- | :--- | :--- |
 | 🌐 **Live Web Application** | Production Cloud Container on Railway (Apache Tomcat 9 + MySQL 8.0) | [Launch Live Portal](https://javalabportal-production.up.railway.app) |
 | 📄 **Final Project Report** | Comprehensive B.Tech Project Report covering Project Overview, Literature Survey, System Design, Implementation, Testing Results, and Conclusion | [View Project Report (PDF)](https://drive.google.com/file/d/your-project-report-link/view?usp=sharing) |
-| 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (PPT / Slides)](https://drive.google.com/file/d/1BaxB_725eF50Ke5uf-6cluJ8e6NJG3By/view?usp=sharing) |
+| 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (Slides)](https://drive.google.com/file/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/view?usp=sharing) \| [Download .PPTX](https://docs.google.com/presentation/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/export/pptx) |
 | 🎥 **Video Demonstration** | HD Video Walkthrough of JavaLabPortal (Student Workflow, Teacher Admin Panel, Experiment Simulators & Feedback System) | [Watch Video Demonstration (YouTube)](https://www.youtube.com/watch?v=your-demo-video-id) |
 
 ---
