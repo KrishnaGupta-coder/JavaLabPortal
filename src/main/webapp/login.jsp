@@ -147,11 +147,6 @@
             <button type="submit">Login</button>
         </form>
 
-        <div style="margin-top: 20px; padding: 12px 14px; background: #eef2ff; border: 1px solid #c7d2fe; border-radius: 8px; font-size: 12px; color: #1e1b4b; text-align: left;">
-            <div style="font-weight: bold; color: #303f9f; margin-bottom: 6px;">🔑 Default Credentials for Evaluation:</div>
-            <div style="margin-bottom: 4px;">• <strong>Teacher:</strong> Username: <code style="background:#fff;padding:1px 4px;border-radius:3px;">teacher</code> | Password: <code style="background:#fff;padding:1px 4px;border-radius:3px;">teacher123</code></div>
-            <div>• <strong>Student:</strong> Name: <code style="background:#fff;padding:1px 4px;border-radius:3px;">Krishna Gupta</code> | Password: <code style="background:#fff;padding:1px 4px;border-radius:3px;">24EARAD083</code></div>
-        </div>
     </div>
 </body>
 </html>
