@@ -111,11 +111,19 @@ The system utilizes a relational database model in MySQL 8.0 to guarantee ACID c
 
 ---
 
-## Week 3: UML Design
+## Week 3: Enterprise UML Architecture & System Design
 
-### 1. Class Diagram
+To provide an industry-grade software engineering specification, the architectural design of **JavaLabPortal** encompasses both **Structural (Static)** and **Behavioral (Dynamic)** UML 2.5 modeling dimensions. This suite provides complete coverage of system entities, actor privileges, runtime communication lifecycles, and deployment topology.
+
+---
+
+### 1. Class Diagram (Static Structural Model)
+The Class Diagram models the core domain JavaBeans (POJOs), Data Access Objects (DAOs), Controller Servlets, Security Filters, and database utility singletons adhering to the 3-tier Model-View-Controller (MVC) architecture.
+
 ```mermaid
 classDiagram
+    direction TB
+
     class DBConnection {
         -Connection connection
         +getConnection() Connection
@@ -128,6 +136,17 @@ classDiagram
         +isValidRollNumber(String) boolean
     }
 
+    class Teacher {
+        -int id
+        -String username
+        -String password
+        -String name
+        +getId() int
+        +getUsername() String
+        +getPassword() String
+        +getName() String
+    }
+
     class Student {
         -int id
         -String rollNumber
@@ -135,8 +154,54 @@ classDiagram
         -String email
         -int classId
         -String className
+        +getId() int
         +getRollNumber() String
         +getName() String
+        +getEmail() String
+        +getClassId() int
+        +getClassName() String
+    }
+
+    class ClassSection {
+        -int id
+        -String className
+        +getId() int
+        +getClassName() String
+    }
+
+    class Experiment {
+        -int id
+        -String title
+        -String description
+        -String type
+        -String liveUrl
+        -int orderNo
+        +getTitle() String
+        +getDescription() String
+    }
+
+    class TheoryContent {
+        -int id
+        -int unitNo
+        -String topic
+        -String content
+        +getUnitNo() int
+        +getTopic() String
+    }
+
+    class Feedback {
+        -int id
+        -String studentName
+        -String course
+        -String feedbackText
+        -int rating
+        +getStudentName() String
+        +getRating() int
+    }
+
+    class TeacherDAO {
+        +findByUsername(String) Teacher
+        +validateTeacher(String, String) boolean
     }
 
     class StudentDAO {
@@ -144,23 +209,30 @@ classDiagram
         +updateStudent(Student) void
         +deleteStudent(int) void
         +getStudentById(int) Student
-        +getStudentByRollNumber(String) Student
         +getStudentByName(String) Student
+        +getStudentByRollNumber(String) Student
         +getAllStudents() List~Student~
     }
 
-    class Teacher {
-        -int id
-        -String username
-        -String password
-        -String name
-        +getUsername() String
-        +getPassword() String
+    class ClassSectionDAO {
+        +getAllClassSections() List~ClassSection~
+        +addClassSection(String) void
+        +deleteClassSection(int) void
     }
 
-    class TeacherDAO {
-        +findByUsername(String) Teacher
-        +validateTeacher(String, String) boolean
+    class ExperimentDAO {
+        +getAllExperiments() List~Experiment~
+        +addExperiment(Experiment) void
+    }
+
+    class TheoryContentDAO {
+        +getAllTheory() List~TheoryContent~
+        +addTheory(TheoryContent) void
+    }
+
+    class FeedbackDAO {
+        +addFeedback(Feedback) void
+        +getAllFeedback() List~Feedback~
     }
 
     class AccessControlFilter {
@@ -176,21 +248,343 @@ classDiagram
         +doPost(HttpServletRequest, HttpServletResponse) void
     }
 
+    class ClassServlet {
+        +doGet(HttpServletRequest, HttpServletResponse) void
+        +doPost(HttpServletRequest, HttpServletResponse) void
+    }
+
+    class CalculatorServlet {
+        +doPost(HttpServletRequest, HttpServletResponse) void
+    }
+
     class CalculatorModel {
         -double currentResult
         +evaluate(String) double
         +calculate(double, double, String) double
     }
 
-    DBConnection <.. StudentDAO : uses
     DBConnection <.. TeacherDAO : uses
-    PortalHelper <.. StudentDAO : uses
-    StudentDAO ..> Student : manages
-    TeacherDAO ..> Teacher : manages
+    DBConnection <.. StudentDAO : uses
+    DBConnection <.. ClassSectionDAO : uses
+    DBConnection <.. ExperimentDAO : uses
+    DBConnection <.. TheoryContentDAO : uses
+    DBConnection <.. FeedbackDAO : uses
+    PortalHelper <.. StudentDAO : sanitizes
+    StudentDAO ..> Student : maps
+    TeacherDAO ..> Teacher : maps
+    ClassSectionDAO ..> ClassSection : maps
+    ExperimentDAO ..> Experiment : maps
+    TheoryContentDAO ..> TheoryContent : maps
+    FeedbackDAO ..> Feedback : maps
     StudentServlet ..> StudentDAO : calls
-    LoginServlet ..> TeacherDAO : calls
-    LoginServlet ..> StudentDAO : calls
-    AccessControlFilter ..> LoginServlet : intercepts
+    ClassServlet ..> ClassSectionDAO : calls
+    LoginServlet ..> TeacherDAO : authenticates
+    LoginServlet ..> StudentDAO : authenticates
+    CalculatorServlet ..> CalculatorModel : invokes
+    AccessControlFilter ..> LoginServlet : guards
+```
+
+---
+
+### 2. Use Case Diagram (Functional Scope & Actor Boundaries)
+The Use Case Diagram defines functional boundaries between administrative faculty (**Teacher Actor**), self-service learners (**Student Actor**), and public visitors.
+
+```mermaid
+flowchart LR
+    subgraph Actors["👥 System Actors"]
+        Teacher["👨‍🏫 Teacher (Faculty Admin)"]
+        Student["👨‍🎓 Student (Enrolled)"]
+        Visitor["👤 Public / Guest Visitor"]
+    end
+
+    subgraph JavaLabPortal["🏫 Java Lab Portal Functional Modules"]
+        UC1(["🔐 Authenticate & Login"])
+        UC2(["🚪 Terminate Session & Logout"])
+        UC3(["👥 Manage Student Records (CRUD)"])
+        UC4(["🏷️ Allocate Academic Class Batches"])
+        UC5(["🧪 Author Custom Lab Experiments"])
+        UC6(["📚 Publish Theory Lecture Topics"])
+        UC7(["⭐ Review Student Lab Feedback"])
+        UC8(["🔬 Browse Syllabus & Swing Demos"])
+        UC9(["🧮 Execute Interactive Arithmetic Lab"])
+        UC10(["📝 Read Unit Theory Notes"])
+        UC11(["💬 Submit Practical Feedback"])
+        UC12(["🌐 View Public Curriculum Shell"])
+    end
+
+    Visitor --> UC12
+    Visitor --> UC1
+
+    Teacher --> UC1
+    Teacher --> UC2
+    Teacher --> UC3
+    Teacher --> UC4
+    Teacher --> UC5
+    Teacher --> UC6
+    Teacher --> UC7
+
+    Student --> UC1
+    Student --> UC2
+    Student --> UC8
+    Student --> UC9
+    Student --> UC10
+    Student --> UC11
+```
+
+---
+
+### 3. Sequence Diagram: Role-Based Authentication & Session Handshake
+Illustrates the exact runtime handshake during authentication: credential verification via PreparedStatements, HTTP session initialization with role tokens, and selective URL redirection.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Client Web Browser
+    participant Filter as AccessControlFilter
+    participant Login as LoginServlet
+    participant TDAO as TeacherDAO
+    participant SDAO as StudentDAO
+    participant Pool as DBConnection
+    participant DB as MySQL 8.0 Engine
+    participant Session as HttpSession
+
+    User->>Filter: POST /LoginServlet (role, username, password)
+    Note over Filter: Whitelisted URL: pass through without session check
+    Filter->>Login: doFilter() -> forward to LoginServlet
+    
+    alt Role == TEACHER
+        Login->>TDAO: findByUsername(username)
+        TDAO->>Pool: getConnection()
+        Pool->>DB: SELECT * FROM teacher WHERE username = ?
+        DB-->>TDAO: ResultSet (id, username, password, name)
+        TDAO-->>Login: Teacher POJO
+        alt Password Verification Matches
+            Login->>Session: setAttribute("role", "TEACHER")
+            Login->>Session: setAttribute("name", teacher.getName())
+            Login-->>User: 302 Redirect -> index.jsp (Teacher Shell)
+        else Password Invalid
+            Login-->>User: 302 Redirect -> login.jsp?error=Invalid+credentials
+        end
+    else Role == STUDENT
+        Login->>SDAO: getStudentByName(username)
+        SDAO->>Pool: getConnection()
+        SDAO->>DB: SELECT s.*, c.class_name FROM student s JOIN class_section c...
+        DB-->>SDAO: ResultSet (name, roll_number, class_name)
+        SDAO-->>Login: Student POJO
+        alt Roll Number Matches
+            Login->>Session: setAttribute("role", "STUDENT")
+            Login->>Session: setAttribute("name", student.getName())
+            Login->>Session: setAttribute("rollNumber", student.getRollNumber())
+            Login->>Session: setAttribute("className", student.getClassName())
+            Login-->>User: 302 Redirect -> index.jsp (Student Workspace)
+        else Roll Number Invalid
+            Login-->>User: 302 Redirect -> login.jsp?error=Invalid+credentials
+        end
+    end
+```
+
+---
+
+### 4. Sequence Diagram: Student Administration & Class Allocation Workflow
+Captures transactional CRUD processing: role guard validation, regex format validation via `PortalHelper`, transactional database writes, and dynamic table view re-rendering.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Teacher as Faculty Admin
+    participant Filter as AccessControlFilter
+    participant Servlet as StudentServlet
+    participant SDAO as StudentDAO
+    participant Pool as DBConnection
+    participant DB as MySQL 8.0 Engine
+    participant View as studentList.jsp
+
+    Teacher->>Filter: POST /StudentServlet?action=add (name, rollNumber, classId)
+    Filter->>Filter: Verify session.getAttribute("role") == "TEACHER"
+    Filter->>Servlet: Authorized -> forward to doPost()
+    
+    Servlet->>Servlet: Validate rollNumber format (PortalHelper.isValidRollNumber)
+    Servlet->>SDAO: addStudent(new Student(...))
+    SDAO->>Pool: getConnection()
+    SDAO->>DB: INSERT INTO student (name, roll_number, class_id) VALUES (?, ?, ?)
+    DB-->>SDAO: 1 Row Affected
+    SDAO-->>Servlet: Success Confirmation
+    
+    Servlet->>SDAO: getAllStudents()
+    SDAO->>DB: SELECT s.id, s.name, s.roll_number, c.class_name FROM student s JOIN class_section c ON s.class_id = c.id
+    DB-->>SDAO: List<Student> Roster
+    SDAO-->>Servlet: studentList
+    
+    Servlet->>Servlet: request.setAttribute("students", studentList)
+    Servlet->>View: RequestDispatcher.forward(request, response)
+    View-->>Teacher: Re-render updated student roster with batch badges
+```
+
+---
+
+### 5. Sequence Diagram: Interactive Mathematical Calculator & Lab Practical Evaluator
+Demonstrates the client-to-engine computation flow: expression validation, Shunting-Yard tokenization, operator stack evaluation, and session history management.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Student as Student Browser
+    participant JSP as arithmetic.jsp
+    participant Filter as AccessControlFilter
+    participant CalcServlet as CalculatorServlet
+    participant Engine as CalculatorModel
+    participant Session as HttpSession
+
+    Student->>JSP: Submit Expression: "(15 * 4) + 120 / 4"
+    Student->>Filter: POST /CalculatorServlet (expression)
+    Filter->>Filter: Verify active authenticated session
+    Filter->>CalcServlet: forward request to servlet
+    
+    CalcServlet->>Engine: evaluate("(15 * 4) + 120 / 4")
+    Note over Engine: Tokenize input string<br/>Infix-to-Postfix conversion (Shunting-Yard)<br/>Stack-based arithmetic resolution
+    Engine->>Engine: Check division-by-zero & expression syntax
+    Engine-->>CalcServlet: Return calculated double: 90.0
+    
+    CalcServlet->>Session: Append calculation to session history list
+    CalcServlet->>CalcServlet: request.setAttribute("result", 90.0)
+    CalcServlet->>JSP: forward to arithmetic.jsp
+    JSP-->>Student: Display live evaluated answer & interactive history log
+```
+
+---
+
+### 6. Activity Diagram: Security Interception & RBAC Filter Pipeline
+Flowchart detailing the decision-making pipeline inside `AccessControlFilter.java`, including static asset bypass, URL whitelisting, session timeout detection, and role privilege verification.
+
+```mermaid
+flowchart TD
+    Start([Incoming HTTP Request]) --> CheckStatic{Is Static Asset?<br/>.css / .js / .png / .svg}
+    
+    CheckStatic -- Yes --> AllowPass[Pass to Container FilterChain]
+    CheckStatic -- No --> CheckWhitelist{Is URI Whitelisted?<br/>login.jsp / LoginServlet / index.jsp}
+    
+    CheckWhitelist -- Yes --> AllowPass
+    CheckWhitelist -- No --> CheckSession{Is HTTP Session Active?<br/>session != null && session.getAttribute('role') != null}
+    
+    CheckSession -- No --> RedirectLogin[Redirect to login.jsp<br/>with session timeout alert]
+    
+    CheckSession -- Yes --> CheckRole{User Role Check}
+    
+    CheckRole -- Role == TEACHER --> TeacherRoutes{Target Route Type}
+    TeacherRoutes -- Admin Action<br/>manageClasses / addStudent / theory --> AllowPass
+    TeacherRoutes -- Other Route --> AllowPass
+    
+    CheckRole -- Role == STUDENT --> StudentRoutes{Target Route Type}
+    StudentRoutes -- Student Authorized<br/>experiments / arithmetic / theoryList / feedback --> AllowPass
+    StudentRoutes -- Admin Privileged<br/>manageClasses / StudentServlet?action=delete --> BlockAccess[Redirect to index.jsp<br/>with HTTP 403 Forbidden Access Alert]
+    
+    AllowPass --> End([Serve Target Resource / Servlet Dispatcher])
+    RedirectLogin --> End
+    BlockAccess --> End
+```
+
+---
+
+### 7. Component & Deployment Architecture Diagram (Physical & Logical 3-Tier Topology)
+Illustrates the physical nodes, execution environments, network ports, and logical software boundaries across Presentation, Application, and Persistence tiers.
+
+```mermaid
+flowchart TB
+    subgraph ClientTier["💻 Tier 1: Client Presentation Layer"]
+        Browser["Modern Web Browser (Chrome, Firefox, Edge, Safari)"]
+        UI_Components["JSP 2.3 Templates & Native Responsive UI<br/>(header.jspf, footer.jspf, index.jsp, experiments.jsp, arithmetic.jsp)"]
+        Browser --- UI_Components
+    end
+
+    subgraph AppTier["⚙️ Tier 2: Application Controller & Business Logic (Apache Tomcat 9 Container)"]
+        subgraph SecurityModule["Security & Interception"]
+            Filter["AccessControlFilter.java<br/>(RBAC & Session Token Guard)"]
+        end
+
+        subgraph ControllerModule["Servlet Dispatchers (Java Servlet 4.0)"]
+            AuthServlets["LoginServlet.java<br/>LogoutServlet.java"]
+            AdminServlets["StudentServlet.java<br/>ClassServlet.java"]
+            LabServlets["ExperimentServlet.java<br/>TheoryServlet.java<br/>FeedbackServlet.java"]
+            CalcServlets["CalculatorServlet.java<br/>ArithmeticServlet.java"]
+        end
+
+        subgraph ServiceModelModule["Domain Models & Mathematical Engine"]
+            CalcEngine["CalculatorModel.java<br/>(Expression Parsing & Operator Stack)"]
+            POJOs["JavaBeans POJOs<br/>(Student, Teacher, ClassSection, Experiment, TheoryContent, Feedback)"]
+        end
+
+        subgraph DAOLayer["Data Access Object (DAO) Persistence Layer"]
+            DAOs["TeacherDAO | StudentDAO | ClassSectionDAO<br/>ExperimentDAO | TheoryContentDAO | FeedbackDAO"]
+            Pool["DBConnection.java (Connection Pool & Resource Manager)<br/>PortalHelper.java (SQL Injection & XSS Sanitizer)"]
+        end
+
+        Filter --> ControllerModule
+        AuthServlets --> DAOs
+        AdminServlets --> DAOs
+        LabServlets --> DAOs
+        CalcServlets --> CalcEngine
+        DAOs --> POJOs
+        DAOs --> Pool
+    end
+
+    subgraph DataTier["🗄️ Tier 3: Enterprise Database Persistence Layer (MySQL 8.0 Cloud Server)"]
+        MySQL[("MySQL 8.0 Relational Engine<br/>ACID Compliant Storage")]
+        Tables[("3NF Normalized Relational Tables<br/>teacher, student, class_section,<br/>experiment, theory_content, feedback")]
+        MySQL --- Tables
+    end
+
+    UI_Components -->|"HTTP GET / POST (TLS Port 443 / 8080)"| Filter
+    Pool -->|"JDBC Connector/J 8.0 (TCP Port 3306 / SSL)"| MySQL
+```
+
+---
+
+### 8. State Machine Diagram: User Authentication & Session Lifecycle
+Models user state transitions from anonymous visitor, through authentication credential resolution, to role-governed active session states, and eventual termination upon logout or timeout.
+
+```mermaid
+stateDiagram-v2
+    [*] --> Guest: Visit Portal URL
+
+    Guest --> Authenticating: Submit Login Credentials
+    
+    state Authenticating {
+        [*] --> Verifying
+        Verifying --> TeacherAuth: Role == TEACHER
+        Verifying --> StudentAuth: Role == STUDENT
+        TeacherAuth --> Success: Valid Password
+        TeacherAuth --> Failure: Invalid Password
+        StudentAuth --> Success: Valid Roll Number
+        StudentAuth --> Failure: Invalid Roll Number
+    }
+
+    Authenticating --> Guest: Authentication Failure (Redirect to login.jsp with alert)
+    
+    Authenticating --> ActiveTeacherSession: Teacher Credentials Validated
+    Authenticating --> ActiveStudentSession: Student Credentials Validated
+
+    state ActiveTeacherSession {
+        TeacherHome --> ClassManagement
+        ClassManagement --> StudentCRUD
+        StudentCRUD --> ExperimentAuthoring
+        ExperimentAuthoring --> FeedbackReview
+    }
+
+    state ActiveStudentSession {
+        StudentHome --> ExperimentCatalog
+        ExperimentCatalog --> ArithmeticEvaluator
+        ArithmeticEvaluator --> TheoryNotes
+        TheoryNotes --> FeedbackSubmission
+    }
+
+    ActiveTeacherSession --> SessionTimedOut: Inactive for 30 Minutes
+    ActiveStudentSession --> SessionTimedOut: Inactive for 30 Minutes
+    
+    ActiveTeacherSession --> Terminated: Explicit Logout (/LogoutServlet)
+    ActiveStudentSession --> Terminated: Explicit Logout (/LogoutServlet)
+    
+    SessionTimedOut --> Guest: Invalidate Session & Redirect to login.jsp
+    Terminated --> Guest: Clear Cache-Control Headers & Invalidate Session
 ```
 
 ---
