@@ -6,6 +6,18 @@
 
 > 🚀 **Live Production Deployment:** [https://javalabportal-production.up.railway.app](https://javalabportal-production.up.railway.app)
 
+> [!IMPORTANT]
+> ### 🔑 Default Login Credentials for Live Testing & Evaluation
+> Evaluators and faculty can immediately test both roles on the live portal using the following seeded credentials:
+>
+> | Persona / Role | Role Selection | Username Field | Password Field | Access & Privileges |
+> | :--- | :--- | :--- | :--- | :--- |
+> | **Teacher (Admin)** | Select **Teacher** | `teacher` | `teacher123` | Full faculty privileges: Manage students, batches, custom lab experiments, theory notes, and student feedback. |
+> | **Student (Enrolled)** | Select **Student** | `Krishna Gupta` | `24EARAD083` | Student self-service: View batch (`AI&DS-A`), execute syllabus experiments, live calculator, theory notes, and submit feedback. |
+> | **Student (Alternate)** | Select **Student** | `Aman Sharma` | `24EARAD045` | Alternate student account enrolled in `CS-A` batch. |
+>
+> *Note for Student Login: Enter the registered **Student Name** in the Username field, and the official **RTU Roll Number** in the Password field.*
+
 ---
 
 ## Week 1: Project Administration & Abstract
