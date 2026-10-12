@@ -47,6 +47,8 @@ The system is built upon a standard 3-tier Model-View-Controller (MVC) architect
 
 Furthermore, JavaLabPortal bridges practical demonstration with continuous institutional feedback. Teachers can dynamically publish custom lab assignments and theory lecture notes directly into MySQL without code redeployment, while students execute real-time arithmetic calculations, review interactive experiment previews, and submit laboratory evaluations. The resulting system modernizes collegiate practical education, providing a reliable, automated platform for practical viva preparation and coursework evaluation.
 
+* You can access the official [Project Abstract (PDF)](https://drive.google.com/file/d/1K9AG2fDYTE0_hbX7xIQ7teJBessejMSO/view?usp=sharing).
+
 ---
 
 ## Week 2: User Roles, SRS & System Architecture
@@ -111,7 +113,7 @@ The system utilizes a relational database model in MySQL 8.0 to guarantee ACID c
 
 ---
 
-## Week 3: Enterprise UML Architecture & System Design
+## Week 3: UML Architecture & System Design
 
 To provide an industry-grade software engineering specification, the architectural design of **JavaLabPortal** encompasses both **Structural (Static)** and **Behavioral (Dynamic)** UML 2.5 modeling dimensions. This suite provides complete coverage of system entities, actor privileges, runtime communication lifecycles, and deployment topology.
 
@@ -1086,6 +1088,7 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
 | Deliverable | Description | Resource Link |
 | :--- | :--- | :--- |
 | 🌐 **Live Web Application** | Production Cloud Container on Railway (Apache Tomcat 9 + MySQL 8.0) | [Launch Live Portal](https://javalabportal-production.up.railway.app) |
+| 📜 **Project Abstract** | Formal Institutional Project Abstract covering Scoping, 3-Tier Architecture & Technology Stack | [View Abstract (PDF)](https://drive.google.com/file/d/1K9AG2fDYTE0_hbX7xIQ7teJBessejMSO/view?usp=sharing) |
 | 📄 **Final Project Report** | Comprehensive B.Tech Project Report covering Project Overview, Literature Survey, System Design, Implementation, Testing Results, and Conclusion | [View Project Report (PDF)](https://drive.google.com/file/d/1uKg6H8RLfPDOdjz9TgR-_LV6oGCSaM8b/view?usp=sharing) |
 | 📑 **IEEE Research Paper** | Scholarly IEEE Research Paper covering Literature Gap Analysis (38 Papers), 3-Tier MVC Architecture, Concurrency Benchmarks & SUS Usability Evaluation | [View Research Paper (PDF)](https://drive.google.com/file/d/1n4yjgoqvqT66Llvaa7mB8FnxWfuevuf8/view?usp=sharing) |
 | 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (Slides)](https://drive.google.com/file/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/view?usp=sharing) \| [Download .PPTX](https://docs.google.com/presentation/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/export/pptx) |
