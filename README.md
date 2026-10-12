@@ -334,12 +334,24 @@ The JavaLabPortal web frontend is crafted using accessible HTML5, custom Bootstr
 ```text
 JavaLabPortal/
 |-- docs/
-|   \-- modules/
-|       |-- Module1_Frontend_PortalAndExperiments.md
-|       |-- Module2_Frontend_ManagementAndTheory.md
-|       |-- Module3_Backend_AuthAndManagement.md
-|       |-- Module4_Backend_ExperimentsAndServices.md
-|       \-- Module5_Database_PersistenceLayer.md
+|   |-- modules/
+|   |   |-- Module1_Frontend_PortalAndExperiments.md
+|   |   |-- Module2_Frontend_ManagementAndTheory.md
+|   |   |-- Module3_Backend_AuthAndManagement.md
+|   |   |-- Module4_Backend_ExperimentsAndServices.md
+|   |   \-- Module5_Database_PersistenceLayer.md
+|   |-- screenshots/
+|   |   |-- ui_login.png
+|   |   |-- ui_teacher_dashboard.png
+|   |   |-- ui_student_dashboard.png
+|   |   |-- ui_manage_classes.png
+|   |   \-- ui_lab_experiments.png
+|   |-- JavaLabPortal_SRS.pdf
+|   |-- JavaLabPortal_Project_Report.pdf
+|   |-- JavaLabPortal_Research_Paper.pdf
+|   |-- JavaLabPortal_Presentation.pptx
+|   |-- RESEARCH_PAPERS_INDEX.md
+|   \-- WEEKLY_REPORTS_WEEK_1_TO_12.md
 |-- src/main/java/com/javalab/
 |   |-- calc/
 |   |   \-- CalculatorModel.java
@@ -388,6 +400,7 @@ JavaLabPortal/
 |   |-- footer.jspf, header.jspf
 |   |-- index.jsp, login.jsp
 |-- .dockerignore
+|-- .gitignore
 |-- Dockerfile
 |-- database.sql
 \-- README.md
