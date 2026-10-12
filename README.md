@@ -458,27 +458,27 @@ Flowchart detailing the decision-making pipeline inside `AccessControlFilter.jav
 
 ```mermaid
 flowchart TD
-    Start([Incoming HTTP Request]) --> CheckStatic{Is Static Asset?<br/>.css / .js / .png / .svg}
+    Start(["Incoming HTTP Request"]) --> CheckStatic{"Is Static Asset? (.css, .js, .png, .svg)"}
     
-    CheckStatic -- Yes --> AllowPass[Pass to Container FilterChain]
-    CheckStatic -- No --> CheckWhitelist{Is URI Whitelisted?<br/>login.jsp / LoginServlet / index.jsp}
+    CheckStatic -- "Yes" --> AllowPass["Pass to Container FilterChain"]
+    CheckStatic -- "No" --> CheckWhitelist{"Is URI Whitelisted? (login.jsp, LoginServlet, index.jsp)"}
     
-    CheckWhitelist -- Yes --> AllowPass
-    CheckWhitelist -- No --> CheckSession{Is HTTP Session Active?<br/>session != null && session.getAttribute('role') != null}
+    CheckWhitelist -- "Yes" --> AllowPass
+    CheckWhitelist -- "No" --> CheckSession{"Is HTTP Session Active? (session != null && session.role != null)"}
     
-    CheckSession -- No --> RedirectLogin[Redirect to login.jsp<br/>with session timeout alert]
+    CheckSession -- "No" --> RedirectLogin["Redirect to login.jsp with Session Timeout Alert"]
     
-    CheckSession -- Yes --> CheckRole{User Role Check}
+    CheckSession -- "Yes" --> CheckRole{"User Role Check"}
     
-    CheckRole -- Role == TEACHER --> TeacherRoutes{Target Route Type}
-    TeacherRoutes -- Admin Action<br/>manageClasses / addStudent / theory --> AllowPass
-    TeacherRoutes -- Other Route --> AllowPass
+    CheckRole -- "Role == TEACHER" --> TeacherRoutes{"Target Route Type"}
+    TeacherRoutes -- "Admin Action (Classes, Students, Theory)" --> AllowPass
+    TeacherRoutes -- "Other Route" --> AllowPass
     
-    CheckRole -- Role == STUDENT --> StudentRoutes{Target Route Type}
-    StudentRoutes -- Student Authorized<br/>experiments / arithmetic / theoryList / feedback --> AllowPass
-    StudentRoutes -- Admin Privileged<br/>manageClasses / StudentServlet?action=delete --> BlockAccess[Redirect to index.jsp<br/>with HTTP 403 Forbidden Access Alert]
+    CheckRole -- "Role == STUDENT" --> StudentRoutes{"Target Route Type"}
+    StudentRoutes -- "Student Authorized (Experiments, Calculator, Feedback)" --> AllowPass
+    StudentRoutes -- "Privileged Action (Class / Student Deletion)" --> BlockAccess["Redirect to index.jsp with HTTP 403 Forbidden Alert"]
     
-    AllowPass --> End([Serve Target Resource / Servlet Dispatcher])
+    AllowPass --> End(["Serve Target Resource / Servlet Dispatcher"])
     RedirectLogin --> End
     BlockAccess --> End
 ```
