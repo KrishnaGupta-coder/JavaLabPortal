@@ -754,6 +754,7 @@ JavaLabPortal/
 |   |   |-- ui_student_dashboard.png
 |   |   |-- ui_manage_classes.png
 |   |   \-- ui_lab_experiments.png
+|   |-- JavaLabPortal_Abstract.pdf
 |   |-- JavaLabPortal_SRS.pdf
 |   |-- JavaLabPortal_Project_Report.pdf
 |   |-- JavaLabPortal_Research_Paper.pdf
