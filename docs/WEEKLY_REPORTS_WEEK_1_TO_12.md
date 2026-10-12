@@ -32,11 +32,11 @@ Week 1 of the Java Lab Portal development was dedicated to **project scoping, 3-
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -167,11 +167,11 @@ Week 2 of the Java Lab Portal development was dedicated to **relational database
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -302,11 +302,11 @@ Week 3 of the Java Lab Portal development was dedicated to **database ddl schema
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -437,11 +437,11 @@ Week 4 of the Java Lab Portal development was dedicated to **domain entity pojos
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -572,11 +572,11 @@ Week 5 of the Java Lab Portal development was dedicated to **teacher authenticat
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -707,11 +707,11 @@ Week 6 of the Java Lab Portal development was dedicated to **academic daos imple
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -842,11 +842,11 @@ Week 7 of the Java Lab Portal development was dedicated to **http security filte
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -977,11 +977,11 @@ Week 8 of the Java Lab Portal development was dedicated to **student crud dispat
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -1112,11 +1112,11 @@ Week 9 of the Java Lab Portal development was dedicated to **mathematical expres
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -1247,11 +1247,11 @@ Week 10 of the Java Lab Portal development was dedicated to **experiment syllabu
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -1382,11 +1382,11 @@ Week 11 of the Java Lab Portal development was dedicated to **frontend jsp views
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
@@ -1517,11 +1517,11 @@ Week 12 of the Java Lab Portal development was dedicated to **system integration
 
 | Name | Enrollment | Email | Mobile |
 | :--- | :--- | :--- | :--- |
-| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955208472 |
-| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 9828551234 |
-| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9414223456 |
-| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 9610114567 |
-| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9785336789 |
+| **Krishna Gupta** | 24E1ARADM40P083 | 16krishnagupta06@gmail.com | 8955915536 |
+| **Karan Ramlakhani** | 24E1ARADM30P076 | karanramlakhani45@gmail.com | 7878288690 |
+| **Kanishq Chasta** | 24E1ARADM40P074 | chastapriyanshu14@gmail.com | 9079005461 |
+| **Jayesh Sharma** | 24E1ARADM40P070 | jayeshpandit2505@gmail.com | 7073311093 |
+| **Juned Hussain** | 24E1ARADM30P072 | junedhussain294@gmail.com | 9982614701 |
 
 ---
 
