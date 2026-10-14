@@ -1,12 +1,18 @@
 /**
  * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
  * Developed by: Krishna Gupta, Jayesh Sharma, Kanishq Chasta, Juned Hussain, Karan Ramlakhani
- * Module: Online Feedback System - Controller
+ * Module: Experiment 10 - Online Feedback System Controller
  */
 package com.javalab.servlet;
 
 import com.javalab.dao.FeedbackDAO;
+import com.javalab.dao.StudentDAO;
+import com.javalab.dao.TeacherDAO;
 import com.javalab.model.Feedback;
+import com.javalab.model.Student;
+import com.javalab.model.Teacher;
+import com.javalab.util.ActiveSessionManager;
+import com.javalab.util.PortalHelper;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,6 +29,8 @@ import java.util.List;
 public class FeedbackServlet extends HttpServlet {
 
     private final FeedbackDAO feedbackDAO = new FeedbackDAO();
+    private final StudentDAO studentDAO = new StudentDAO();
+    private final TeacherDAO teacherDAO = new TeacherDAO();
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,11 +51,135 @@ public class FeedbackServlet extends HttpServlet {
         String role = (String) session.getAttribute("role");
         String action = request.getParameter("action");
         if (action == null || action.trim().isEmpty()) {
-            action = "STUDENT".equals(role) ? "form" : "list";
+            action = "view";
         }
 
         try {
-            // Student submits feedback
+            // 1. Experiment 10 Dedicated Login
+            if ("exp10_login".equals(action)) {
+                String reqRole = request.getParameter("role");
+                String username = request.getParameter("username");
+                String password = request.getParameter("password");
+
+                if ("TEACHER".equalsIgnoreCase(reqRole)) {
+                    Teacher teacher = teacherDAO.findByUsername(username != null ? username.trim() : "");
+                    if (teacher != null && teacher.getPassword().equals(password != null ? password.trim() : "")) {
+                        session.setAttribute("role", "TEACHER");
+                        session.setAttribute("name", teacher.getName());
+                        response.sendRedirect("feedback.jsp?msg=Welcome+Prof.+" + java.net.URLEncoder.encode(teacher.getName(), "UTF-8") + "!");
+                        return;
+                    }
+                    response.sendRedirect("feedback.jsp?tab=login&error=Invalid+faculty+credentials.+Please+try+again.");
+                    return;
+                } else {
+                    // Student Login
+                    String rollOrName = username != null ? username.trim() : "";
+                    Student student = studentDAO.getStudentByRoll(rollOrName);
+                    if (student == null) {
+                        student = studentDAO.getStudentByName(rollOrName);
+                    }
+
+                    if (student != null) {
+                        String studentPwd = studentDAO.getStudentPassword(student.getId());
+                        boolean pwdMatch = false;
+                        if (password != null && !password.trim().isEmpty()) {
+                            pwdMatch = password.trim().equals(studentPwd) || password.trim().equalsIgnoreCase(student.getRollNumber());
+                        }
+
+                        if (pwdMatch) {
+                            String roll = student.getRollNumber();
+                            // Enforce Single Active Device Session for Student
+                            if (ActiveSessionManager.isAlreadyLoggedIn(roll, session.getId())) {
+                                response.sendRedirect("feedback.jsp?tab=login&error=Security+Alert:+This+student+account+is+already+logged+in+on+another+device+or+browser.+Concurrent+logins+are+blocked+until+logout.");
+                                return;
+                            }
+
+                            ActiveSessionManager.registerLogin(roll, session.getId());
+                            session.setAttribute("role", "STUDENT");
+                            session.setAttribute("name", student.getName());
+                            session.setAttribute("rollNumber", student.getRollNumber());
+                            session.setAttribute("studentId", student.getId());
+                            session.setAttribute("className", student.getClassName());
+
+                            response.sendRedirect("feedback.jsp?msg=Welcome+" + java.net.URLEncoder.encode(student.getName(), "UTF-8") + "!");
+                            return;
+                        }
+                    }
+                    response.sendRedirect("feedback.jsp?tab=login&error=Invalid+student+roll+number+or+password.+Please+try+again.");
+                    return;
+                }
+            }
+
+            // 2. Experiment 10 Dedicated Student-Only Registration
+            if ("exp10_register".equals(action)) {
+                String name = request.getParameter("name");
+                String rollNumber = request.getParameter("rollNumber");
+                String email = request.getParameter("email");
+                String classIdStr = request.getParameter("classId");
+                String password = request.getParameter("password");
+                String confirmPassword = request.getParameter("confirmPassword");
+
+                if (name == null || name.trim().isEmpty() ||
+                    rollNumber == null || rollNumber.trim().isEmpty() ||
+                    password == null || password.trim().isEmpty()) {
+                    response.sendRedirect("feedback.jsp?tab=register&error=All+mandatory+fields+are+required.");
+                    return;
+                }
+
+                if (!password.equals(confirmPassword)) {
+                    response.sendRedirect("feedback.jsp?tab=register&error=Passwords+do+not+match.+Please+try+again.");
+                    return;
+                }
+
+                int classId = 1;
+                if (classIdStr != null && !classIdStr.trim().isEmpty()) {
+                    try {
+                        classId = Integer.parseInt(classIdStr.trim());
+                    } catch (Exception ignored) {}
+                }
+
+                Student existing = studentDAO.getStudentByRoll(rollNumber.trim());
+                if (existing != null) {
+                    response.sendRedirect("feedback.jsp?tab=register&error=Roll+number+" + rollNumber.trim() + "+is+already+registered.+Please+log+in.");
+                    return;
+                }
+
+                Student s = new Student();
+                s.setName(PortalHelper.cleanInput(name));
+                s.setRollNumber(rollNumber.trim().toUpperCase());
+                s.setClassId(classId);
+
+                studentDAO.registerStudent(s, email, password);
+
+                // Auto login student in single session
+                String roll = s.getRollNumber();
+                ActiveSessionManager.registerLogin(roll, session.getId());
+                session.setAttribute("role", "STUDENT");
+                session.setAttribute("name", s.getName());
+                session.setAttribute("rollNumber", s.getRollNumber());
+                session.setAttribute("studentId", s.getId());
+
+                response.sendRedirect("feedback.jsp?msg=Student+registration+successful!+You+are+now+logged+in+as+" + java.net.URLEncoder.encode(s.getName(), "UTF-8"));
+                return;
+            }
+
+            // 3. Experiment 10 Logout
+            if ("exp10_logout".equals(action)) {
+                String roll = (String) session.getAttribute("rollNumber");
+                if (roll != null) {
+                    ActiveSessionManager.removeLogin(roll);
+                }
+                session.removeAttribute("role");
+                session.removeAttribute("name");
+                session.removeAttribute("rollNumber");
+                session.removeAttribute("studentId");
+                session.removeAttribute("className");
+
+                response.sendRedirect("feedback.jsp?tab=login&msg=You+have+been+logged+out+of+the+feedback+system.");
+                return;
+            }
+
+            // 4. Student submits feedback
             if ("submit".equals(action)) {
                 String studentName = (String) session.getAttribute("name");
                 if (studentName == null || studentName.trim().isEmpty()) {
@@ -75,15 +207,15 @@ public class FeedbackServlet extends HttpServlet {
 
                 feedbackDAO.addFeedback(feedback);
 
-                // Students are NOT redirected to feedback list!
-                response.sendRedirect("feedback.jsp?msg=Your+feedback+has+been+successfully+submitted+to+the+faculty.+Thank+you!");
+                // Students are NOT shown other feedbacks! Redirect back with success status
+                response.sendRedirect("feedback.jsp?submitted=true&msg=Feedback+successfully+recorded.+Thank+you+for+your+submission!");
                 return;
             }
 
-            // Export to CSV / Excel (Teacher ONLY)
+            // 5. Export to CSV / Excel (Teacher ONLY)
             if ("export_csv".equals(action)) {
                 if (!"TEACHER".equals(role)) {
-                    response.sendRedirect("index.jsp?error=Export+privileges+are+restricted+to+faculty.");
+                    response.sendRedirect("feedback.jsp?error=Export+privileges+are+restricted+to+faculty.");
                     return;
                 }
 
@@ -112,34 +244,7 @@ public class FeedbackServlet extends HttpServlet {
                 return;
             }
 
-            // Teacher Feedback Dashboard (Teacher ONLY)
-            if ("list".equals(action)) {
-                if (!"TEACHER".equals(role)) {
-                    response.sendRedirect("index.jsp?error=Feedback+evaluation+reports+are+accessible+to+faculty+only.");
-                    return;
-                }
-
-                String facultyQuery = request.getParameter("facultyQuery");
-                String courseQuery = request.getParameter("courseQuery");
-                String ratingStr = request.getParameter("ratingFilter");
-                Integer ratingFilter = null;
-                if (ratingStr != null && !ratingStr.trim().isEmpty()) {
-                    try {
-                        ratingFilter = Integer.parseInt(ratingStr.trim());
-                    } catch (Exception ignored) {}
-                }
-
-                List<Feedback> feedbackList = feedbackDAO.searchFeedback(facultyQuery, courseQuery, ratingFilter);
-                request.setAttribute("feedbackList", feedbackList);
-                request.setAttribute("facultyQuery", facultyQuery);
-                request.setAttribute("courseQuery", courseQuery);
-                request.setAttribute("ratingFilter", ratingStr);
-
-                request.getRequestDispatcher("/feedbackList.jsp").forward(request, response);
-                return;
-            }
-
-            // Default student form
+            // 6. Default view
             response.sendRedirect("feedback.jsp");
 
         } catch (SQLException e) {

@@ -1,7 +1,8 @@
 /**
  * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
  * Developed by: Krishna Gupta, Jayesh Sharma, Kanishq Chasta, Juned Hussain, Karan Ramlakhani
- * Module: Authentication & Session Lifecycle
+ * Module: Authentication & Access Control
+ * Description: Invalidates user session and terminates login state.
  */
 package com.javalab.servlet;
 
@@ -24,13 +25,12 @@ public class LogoutServlet extends HttpServlet {
 
         HttpSession session = request.getSession(false);
         if (session != null) {
-            String roll = (String) session.getAttribute("rollNumber");
-            if (roll != null) {
-                ActiveSessionManager.removeLogin(roll);
+            String rollNumber = (String) session.getAttribute("rollNumber");
+            if (rollNumber != null) {
+                ActiveSessionManager.removeLogin(rollNumber);
             }
             session.invalidate();
         }
-
-        response.sendRedirect("login.jsp?msg=You+have+been+logged+out+successfully.");
+        response.sendRedirect("login.jsp?msg=You+have+been+logged+out");
     }
 }
