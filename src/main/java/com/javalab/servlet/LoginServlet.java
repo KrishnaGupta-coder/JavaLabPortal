@@ -2,7 +2,7 @@
  * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
  * Developed by: Krishna Gupta, Jayesh Sharma, Kanishq Chasta, Juned Hussain, Karan Ramlakhani
  * Module: Authentication & Access Control
- * Description: Handles user login validation and session initialization.
+ * Description: Validates credentials and enforces single-session exclusivity for students.
  */
 package com.javalab.servlet;
 
@@ -10,6 +10,7 @@ import com.javalab.dao.StudentDAO;
 import com.javalab.dao.TeacherDAO;
 import com.javalab.model.Student;
 import com.javalab.model.Teacher;
+import com.javalab.util.ActiveSessionManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,8 +44,7 @@ public class LoginServlet extends HttpServlet {
                         username == null ? "" : username.trim()
                 );
 
-                if (teacher != null
-                        && teacher.getPassword().equals(password)) {
+                if (teacher != null && teacher.getPassword().equals(password)) {
 
                     session.setAttribute("role", "TEACHER");
                     session.setAttribute("name", teacher.getName());
@@ -56,49 +56,50 @@ public class LoginServlet extends HttpServlet {
             }
             else if ("STUDENT".equals(role)) {
 
-                String studentName = username == null
-                        ? ""
-                        : username.trim();
+                String studentIdentifier = username == null ? "" : username.trim();
+                String enteredPassword = password == null ? "" : password.trim();
 
-                String studentRollNumber = password == null
-                        ? ""
-                        : password.trim();
+                Student student = studentDAO.getStudentByName(studentIdentifier);
+                if (student == null) {
+                    student = studentDAO.getStudentByRollNumber(studentIdentifier);
+                }
 
-Student student = studentDAO.getStudentByName(studentName);
+                if (student != null) {
+                    String savedPwd = studentDAO.getStudentPassword(student.getId());
+                    boolean passwordMatches = enteredPassword.equalsIgnoreCase(student.getRollNumber()) ||
+                                             (savedPwd != null && savedPwd.equals(enteredPassword));
 
-if (student != null
-                        && student.getRollNumber().equals(studentRollNumber)) {
+                    if (passwordMatches) {
+                        // Enforce Single Active Device Session
+                        if (ActiveSessionManager.isAlreadyLoggedIn(student.getRollNumber(), session.getId())) {
+                            response.sendRedirect("login.jsp?error=This+student+account+is+already+active+in+another+browser+or+device.+Concurrent+logins+are+blocked+for+security.");
+                            return;
+                        }
 
-                    session.setAttribute("role", "STUDENT");
-                    session.setAttribute("name", student.getName());
-                    session.setAttribute("rollNumber", student.getRollNumber());
-                    session.setAttribute("studentId", student.getId());
-                    session.setAttribute("className", student.getClassName());
+                        ActiveSessionManager.registerLogin(student.getRollNumber(), session.getId());
 
-                    response.sendRedirect("index.jsp");
-                    return;
+                        session.setAttribute("role", "STUDENT");
+                        session.setAttribute("name", student.getName());
+                        session.setAttribute("rollNumber", student.getRollNumber());
+                        session.setAttribute("studentId", student.getId());
+                        session.setAttribute("className", student.getClassName());
+
+                        response.sendRedirect("index.jsp");
+                        return;
+                    }
                 }
             }
             response.sendRedirect("login.jsp?error=Invalid+credentials");
 
         } catch (SQLException e) {
-
-            request.setAttribute(
-                    "errorMessage",
-                    "Database error: " + e.getMessage()
-            );
-
-            request.getRequestDispatcher("/error.jsp")
-                   .forward(request, response);
+            request.setAttribute("errorMessage", "Database error: " + e.getMessage());
+            request.getRequestDispatcher("/error.jsp").forward(request, response);
         }
     }
 
     @Override
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         response.sendRedirect("login.jsp");
     }
 }
-

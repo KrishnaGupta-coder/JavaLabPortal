@@ -1,10 +1,11 @@
 /**
  * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
  * Developed by: Krishna Gupta, Jayesh Sharma, Kanishq Chasta, Juned Hussain, Karan Ramlakhani
- * Module: Authentication & Access Control
- * Description: Intercepts HTTP requests and verifies role permissions.
+ * Module: Authentication & Access Control Filter
  */
 package com.javalab.filter;
+
+import com.javalab.util.ActiveSessionManager;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;
@@ -18,17 +19,22 @@ public class AccessControlFilter implements Filter {
 
     private static final String ROLE_STUDENT = "STUDENT";
     private static final String ROLE_TEACHER = "TEACHER";
+
     private static final String[] PUBLIC_ENDPOINTS = {
-            "/login.jsp", "/LoginServlet", "/error.jsp"
+            "/login.jsp", "/LoginServlet", "/LogoutServlet",
+            "/register.jsp", "/RegisterServlet", "/error.jsp"
     };
+
     private static final String[] TEACHER_EXCLUSIVE_ENDPOINTS = {
             "/StudentServlet", "/students/",
             "/ClassServlet", "/classes/",
             "/theory/addTheory.jsp",
-            "/experiments/addExperiment.jsp"
+            "/experiments/addExperiment.jsp",
+            "/feedbackList.jsp"
     };
+
     private static final String[] ACTION_RESTRICTED_ENDPOINTS = {
-            "/TheoryServlet", "/ExperimentServlet"
+            "/TheoryServlet", "/ExperimentServlet", "/FeedbackServlet"
     };
 
     @Override
@@ -43,6 +49,7 @@ public class AccessControlFilter implements Filter {
 
         String contextPath = httpRequest.getContextPath();
         String targetURI = httpRequest.getRequestURI().substring(contextPath.length());
+
         if (isPublicOrStatic(targetURI)) {
             filterChain.doFilter(request, response);
             return;
@@ -50,19 +57,28 @@ public class AccessControlFilter implements Filter {
 
         HttpSession activeSession = httpRequest.getSession(false);
         String currentRole = (activeSession != null) ? (String) activeSession.getAttribute("role") : null;
+
         if (currentRole == null) {
             httpResponse.sendRedirect(contextPath + "/login.jsp?error=Please+login+first");
             return;
         }
+
         if (ROLE_STUDENT.equalsIgnoreCase(currentRole)) {
+            String roll = (String) activeSession.getAttribute("rollNumber");
+            if (roll != null) {
+                ActiveSessionManager.touch(roll);
+            }
+
             if (isTeacherExclusive(targetURI)) {
-                httpResponse.sendRedirect(contextPath + "/index.jsp?error=Teachers+only");
+                httpResponse.sendRedirect(contextPath + "/index.jsp?error=Faculty+privileges+required");
                 return;
             }
+
             if (isActionRestricted(targetURI)) {
                 String requestedAction = httpRequest.getParameter("action");
-                if ("add".equalsIgnoreCase(requestedAction) || "delete".equalsIgnoreCase(requestedAction)) {
-                    httpResponse.sendRedirect(contextPath + "/index.jsp?error=Teachers+only");
+                if ("add".equalsIgnoreCase(requestedAction) || "delete".equalsIgnoreCase(requestedAction) ||
+                    "list".equalsIgnoreCase(requestedAction) || "export_csv".equalsIgnoreCase(requestedAction)) {
+                    httpResponse.sendRedirect(contextPath + "/index.jsp?error=Faculty+privileges+required");
                     return;
                 }
             }
@@ -72,7 +88,9 @@ public class AccessControlFilter implements Filter {
     }
 
     private boolean isPublicOrStatic(String uri) {
-        if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".png") || uri.endsWith(".ico")) {
+        if (uri.endsWith(".css") || uri.endsWith(".js") || uri.endsWith(".png") ||
+            uri.endsWith(".jpg") || uri.endsWith(".jpeg") || uri.endsWith(".ico") ||
+            uri.startsWith("/images/")) {
             return true;
         }
         for (String endpoint : PUBLIC_ENDPOINTS) {
@@ -102,4 +120,3 @@ public class AccessControlFilter implements Filter {
     @Override
     public void destroy() { }
 }
-

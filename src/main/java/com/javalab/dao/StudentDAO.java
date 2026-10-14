@@ -2,11 +2,12 @@
  * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
  * Developed by: Krishna Gupta, Jayesh Sharma, Kanishq Chasta, Juned Hussain, Karan Ramlakhani
  * Module: Student & Class Management
- * Description: Student CRUD operations and authentication by roll number.
+ * Description: Student CRUD operations, registration, and authentication by roll number.
  */
 package com.javalab.dao;
 
 import com.javalab.db.DBConnection;
+import com.javalab.db.DBMigrator;
 import com.javalab.model.Student;
 import com.javalab.util.PortalHelper;
 
@@ -20,13 +21,17 @@ import java.util.List;
 
 public class StudentDAO {
 
+    public StudentDAO() {
+        DBMigrator.ensureSchema();
+    }
+
     private static final String BASE_STUDENT_QUERY =
             "SELECT s.id, s.name, s.roll_number, s.class_id, c.class_name " +
             "FROM student s LEFT JOIN class_section c ON s.class_id = c.id ";
 
     public void addStudent(Student student) throws SQLException {
         if (student == null) return;
-        String sql = "INSERT INTO student (name, roll_number, class_id) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO student (name, roll_number, class_id, password) VALUES (?, ?, ?, ?)";
         Connection con = null;
         PreparedStatement ps = null;
 
@@ -36,10 +41,52 @@ public class StudentDAO {
             ps.setString(1, PortalHelper.cleanInput(student.getName()));
             ps.setString(2, student.getRollNumber().trim().toUpperCase());
             ps.setInt(3, student.getClassId());
+            ps.setString(4, student.getRollNumber().trim().toUpperCase());
             ps.executeUpdate();
         } finally {
             PortalHelper.safeClose(ps, con);
         }
+    }
+
+    public void registerStudent(Student student, String email, String password) throws SQLException {
+        if (student == null) return;
+        String sql = "INSERT INTO student (name, roll_number, class_id, email, password) VALUES (?, ?, ?, ?, ?)";
+        Connection con = null;
+        PreparedStatement ps = null;
+
+        try {
+            con = DBConnection.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setString(1, PortalHelper.cleanInput(student.getName()));
+            ps.setString(2, student.getRollNumber().trim().toUpperCase());
+            ps.setInt(3, student.getClassId());
+            ps.setString(4, PortalHelper.cleanInput(email));
+            ps.setString(5, password != null ? password.trim() : student.getRollNumber().trim().toUpperCase());
+            ps.executeUpdate();
+        } finally {
+            PortalHelper.safeClose(ps, con);
+        }
+    }
+
+    public String getStudentPassword(int studentId) throws SQLException {
+        String sql = "SELECT password, roll_number FROM student WHERE id = ?";
+        Connection con = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+
+        try {
+            con = DBConnection.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setInt(1, studentId);
+            rs = ps.executeQuery();
+            if (rs.next()) {
+                String pwd = rs.getString("password");
+                return (pwd != null && !pwd.trim().isEmpty()) ? pwd : rs.getString("roll_number");
+            }
+        } finally {
+            PortalHelper.safeClose(rs, ps, con);
+        }
+        return null;
     }
 
     public void updateStudent(Student student) throws SQLException {
@@ -138,6 +185,10 @@ public class StudentDAO {
         return null;
     }
 
+    public Student getStudentByRoll(String rollNumber) throws SQLException {
+        return getStudentByRollNumber(rollNumber);
+    }
+
     public List<Student> getAllStudents() throws SQLException {
         List<Student> records = new ArrayList<>();
         String sql = BASE_STUDENT_QUERY + "ORDER BY s.id DESC";
@@ -193,4 +244,3 @@ public class StudentDAO {
         );
     }
 }
-
