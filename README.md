@@ -84,13 +84,13 @@ The JavaLabPortal architecture operates on a 3-tier MVC pattern, separating the 
 
 #### Functional Modules
 * **Module 1: Frontend Portal Shell & Experiment Hub (Krishna Gupta):**
-  Renders the shared UI shell (`header.jspf`, `footer.jspf`), landing dashboard (`index.jsp`), role-based authentication portal (`login.jsp`), error handler (`error.jsp`), and individual interactive practical experiment interfaces (`exp1.jsp` through `exp9.jsp`, `arithmetic.jsp`).
+  Renders the shared UI shell (`header.jspf`, `footer.jspf`), landing dashboard (`index.jsp`), role-based authentication portal (`login.jsp`), error handler (`error.jsp`), and individual interactive practical experiment interfaces (`exp1.jsp` through `exp10.jsp`, `arithmetic.jsp`, `exp5.jsp`). All 10 experiments feature desktop window frames, live interactive demonstrations, and collapsible syntax-highlighted Java source code accordions.
 * **Module 2: Frontend Management Forms & Theory Views (Karan Ramlakhani):**
-  Renders administrative student tables (`studentList.jsp`), registration dialogs (`addStudent.jsp`, `updateStudent.jsp`), class section management (`manageClasses.jsp`), theory cards (`theoryList.jsp`), custom assignment forms (`addExperiment.jsp`), and feedback forms (`feedback.jsp`, `feedbackList.jsp`).
+  Renders administrative student tables (`studentList.jsp`), registration dialogs (`addStudent.jsp`, `updateStudent.jsp`), class section management (`manageClasses.jsp`), theory cards (`theoryList.jsp`), custom assignment forms (`addExperiment.jsp`), and role-based feedback dashboards (`feedback.jsp`, `feedbackList.jsp`) with student-only registration, faculty search, and Excel/PDF export.
 * **Module 3: Security, Authentication & Management Controllers (Kanishq Chasta):**
-  Intercepts incoming HTTP requests via `AccessControlFilter.java`, validates credentials and session state via `LoginServlet.java` and `LogoutServlet.java`, processes student lifecycle in `StudentServlet.java`, manages class batches in `ClassServlet.java`, and configures `web.xml`.
+  Intercepts incoming HTTP requests via `AccessControlFilter.java`, validates credentials and session state via `LoginServlet.java` and `LogoutServlet.java`, enforces single active device session locking via `ActiveSessionManager.java`, processes student lifecycle in `StudentServlet.java`, manages class batches in `ClassServlet.java`, and configures `web.xml`.
 * **Module 4: Calculator Model & Laboratory Services (Jayesh Sharma):**
-  Encapsulates mathematical parsing and operator precedence in `CalculatorModel.java`, evaluates arithmetic requests via `CalculatorServlet.java` and `ArithmeticServlet.java`, dispatches syllabus content in `ExperimentServlet.java` and `TheoryServlet.java`, and sanitizes reviews in `FeedbackServlet.java`.
+  Encapsulates mathematical parsing and operator precedence in `CalculatorModel.java`, evaluates arithmetic requests via `CalculatorServlet.java` and `ArithmeticServlet.java`, handles Employee JDBC CRUD via `EmployeeServlet.java`, dispatches syllabus content in `ExperimentServlet.java` and `TheoryServlet.java`, and manages role-based evaluation & CSV exports in `FeedbackServlet.java`.
 * **Module 5: Database Persistence & DAO Architecture (Juned Hussain):**
   Maintains the relational schema `database.sql`, implements singleton connection pooling in `DBConnection.java`, provides input sanitization and resource safety in `PortalHelper.java`, encapsulates entity POJOs, and executes SQL operations across all DAO classes.
 
@@ -235,6 +235,15 @@ classDiagram
     class FeedbackDAO {
         +addFeedback(Feedback) void
         +getAllFeedback() List~Feedback~
+        +searchFeedback(String, String, Integer) List~Feedback~
+    }
+
+    class EmployeeDAO {
+        +save(Employee) void
+        +findById(String) Employee
+        +update(Employee) void
+        +delete(String) void
+        +getAll() List~Employee~
     }
 
     class AccessControlFilter {
@@ -632,12 +641,19 @@ stateDiagram-v2
   * `unit_no` (`INT`, `DEFAULT 1`)
   * `created_at` (`TIMESTAMP`, `DEFAULT CURRENT_TIMESTAMP`)
 
-* **`feedback` Table:** Student ratings and reviews.
+* **`feedback` Table:** Student ratings and reviews with instructor evaluation.
   * `id` (`INT`, `PRIMARY KEY`, `AUTO_INCREMENT`)
   * `student_name` (`VARCHAR(100)`, `NOT NULL`)
+  * `course` (`VARCHAR(100)`, `NOT NULL`)
+  * `faculty_name` (`VARCHAR(100)`, `NOT NULL`)
+  * `feedback_text` (`TEXT`, `NOT NULL`)
   * `rating` (`INT`, `CHECK (rating BETWEEN 1 AND 5)`)
-  * `comments` (`TEXT`)
-  * `created_at` (`TIMESTAMP`, `DEFAULT CURRENT_TIMESTAMP`)
+  * `submitted_at` (`TIMESTAMP`, `DEFAULT CURRENT_TIMESTAMP`)
+
+* **`employee` Table (Experiment 5 - JDBC CRUD):** Desktop Swing employee registration persistence.
+  * `empid` (`VARCHAR(50)`, `PRIMARY KEY`)
+  * `empname` (`VARCHAR(100)`, `NOT NULL`)
+  * `empno` (`VARCHAR(50)`, `NOT NULL`)
 
 ---
 
@@ -766,17 +782,20 @@ JavaLabPortal/
 |   |   \-- CalculatorModel.java
 |   |-- dao/
 |   |   |-- ClassSectionDAO.java
+|   |   |-- EmployeeDAO.java
 |   |   |-- ExperimentDAO.java
 |   |   |-- FeedbackDAO.java
 |   |   |-- StudentDAO.java
 |   |   |-- TeacherDAO.java
 |   |   \-- TheoryContentDAO.java
 |   |-- db/
-|   |   \-- DBConnection.java
+|   |   |-- DBConnection.java
+|   |   \-- DBMigrator.java
 |   |-- filter/
 |   |   \-- AccessControlFilter.java
 |   |-- model/
 |   |   |-- ClassSection.java
+|   |   |-- Employee.java
 |   |   |-- Experiment.java
 |   |   |-- Feedback.java
 |   |   |-- Student.java
@@ -786,13 +805,16 @@ JavaLabPortal/
 |   |   |-- ArithmeticServlet.java
 |   |   |-- CalculatorServlet.java
 |   |   |-- ClassServlet.java
+|   |   |-- EmployeeServlet.java
 |   |   |-- ExperimentServlet.java
 |   |   |-- FeedbackServlet.java
 |   |   |-- LoginServlet.java
 |   |   |-- LogoutServlet.java
+|   |   |-- RegisterServlet.java
 |   |   |-- StudentServlet.java
 |   |   \-- TheoryServlet.java
 |   \-- util/
+|       |-- ActiveSessionManager.java
 |       \-- PortalHelper.java
 |-- src/main/webapp/
 |   |-- classes/manageClasses.jsp
@@ -800,12 +822,17 @@ JavaLabPortal/
 |   |-- students/ (addStudent.jsp, studentList.jsp, updateStudent.jsp)
 |   |-- theory/ (addTheory.jsp, theoryList.jsp)
 |   |-- WEB-INF/web.xml
-|   |-- arithmetic.jsp
+|   |-- images/ (Krishna_Gupta.png, Ram_Babu_Buri_Sir.jpg)
+|   |-- arithmetic.jsp (Exp 8: Servlet Input/Output)
 |   |-- error.jsp
-|   |-- exp1.jsp - exp4.jsp
-|   |-- exp6-preview.jsp, exp7-preview.jsp, exp9.jsp
-|   |-- experiments.jsp
-|   |-- feedback.jsp, feedbackList.jsp
+|   |-- exp1.jsp - exp4.jsp (Exp 1-4 Swing Replicas)
+|   |-- exp5.jsp (Exp 5: Employee Registration Desk JDBC CRUD)
+|   |-- exp6-preview.jsp (Exp 6: TCP Socket Network Chat)
+|   |-- exp7-preview.jsp (Exp 7: RMI Distributed Calculator)
+|   |-- exp9.jsp (Exp 9: JSP Login Validation)
+|   |-- experiments.jsp (Interactive Experiments Catalog)
+|   |-- feedback.jsp (Exp 10: Role-Based Feedback System)
+|   |-- feedbackList.jsp (Exp 10: Teacher Review & CSV Export)
 |   |-- footer.jspf, header.jspf
 |   |-- index.jsp, login.jsp
 |-- .dockerignore
