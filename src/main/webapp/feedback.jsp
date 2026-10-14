@@ -255,6 +255,40 @@
         gap: 12px;
     }
 
+    
+    /* Code Accordion Styles */
+    .code-accordion-header {
+        background: #2d3748;
+        color: #e2e8f0;
+        padding: 12px 18px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: bold;
+        font-size: 14px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 14px;
+        user-select: none;
+        transition: background 0.2s;
+    }
+    .code-accordion-header:hover {
+        background: #1a202c;
+    }
+    .code-accordion-content {
+        display: none;
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 16px;
+        border-radius: 0 0 6px 6px;
+        overflow-x: auto;
+        font-family: 'Consolas', 'Courier New', monospace;
+        font-size: 13px;
+        line-height: 1.5;
+        border: 1px solid #4a5568;
+        border-top: none;
+    }
+
     /* Printing styles */
     @media print {
         body { background: white !important; color: black !important; }
@@ -621,6 +655,271 @@
 
     <% } %>
 
+
+    <!-- ========================================================== -->
+    <!-- EXPERIMENT 10 JAVA SOURCE CODE ACCORDIONS                   -->
+    <!-- ========================================================== -->
+    <div style="margin-top: 36px; padding-top: 20px; border-top: 2px dashed #cbd5e1;">
+        <h3 style="color: #1e3c72; margin: 0 0 6px 0; font-size: 18px;">
+            &#128187; Experiment 10: Complete Java Backend Architecture
+        </h3>
+        <p style="color: #64748b; font-size: 13px; margin: 0 0 16px 0;">
+            Explore the enterprise MVC architecture for Experiment 10, including the JavaBean Model, Data Access Object (DAO), Controller Servlet, and Single-Device Session Security.
+        </p>
+
+        <!-- 1. Feedback.java (Domain Model) -->
+        <div class="code-accordion-header" onclick="toggleCode('exp10ModelCode', 'exp10ModelIcon')">
+            <span>&#128196; 1. JavaBean Model: Feedback.java</span>
+            <span id="exp10ModelIcon">&#9660; Click to Expand</span>
+        </div>
+        <div id="exp10ModelCode" class="code-accordion-content">
+<pre style="margin:0;"><code style="color:#d4d4d4;"><span style="color:#6a9955;">/**
+ * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
+ * Module: Experiment 10 - Online Feedback System Domain Model
+ */</span>
+<span style="color:#569cd6;">package</span> <span style="color:#4ec9b0;">com.javalab.model</span>;
+
+<span style="color:#569cd6;">public class</span> <span style="color:#4ec9b0;">Feedback</span> {
+
+    <span style="color:#569cd6;">private int</span> id;
+    <span style="color:#569cd6;">private</span> <span style="color:#4ec9b0;">String</span> studentName;
+    <span style="color:#569cd6;">private</span> <span style="color:#4ec9b0;">String</span> course;
+    <span style="color:#569cd6;">private</span> <span style="color:#4ec9b0;">String</span> facultyName;
+    <span style="color:#569cd6;">private</span> <span style="color:#4ec9b0;">String</span> feedbackText;
+    <span style="color:#569cd6;">private int</span> rating;
+    <span style="color:#569cd6;">private</span> <span style="color:#4ec9b0;">String</span> submittedAt;
+
+    <span style="color:#569cd6;">public</span> <span style="color:#dcdcaa;">Feedback</span>() {}
+
+    <span style="color:#569cd6;">public</span> <span style="color:#dcdcaa;">Feedback</span>(<span style="color:#569cd6;">int</span> id, <span style="color:#4ec9b0;">String</span> studentName, <span style="color:#4ec9b0;">String</span> course, <span style="color:#4ec9b0;">String</span> facultyName,
+                    <span style="color:#4ec9b0;">String</span> feedbackText, <span style="color:#569cd6;">int</span> rating) {
+        <span style="color:#569cd6;">this</span>.id = id;
+        <span style="color:#569cd6;">this</span>.studentName = studentName;
+        <span style="color:#569cd6;">this</span>.course = course;
+        <span style="color:#569cd6;">this</span>.facultyName = facultyName;
+        <span style="color:#569cd6;">this</span>.feedbackText = feedbackText;
+        <span style="color:#569cd6;">this</span>.rating = rating;
+    }
+
+    <span style="color:#569cd6;">public int</span> <span style="color:#dcdcaa;">getId</span>() { <span style="color:#569cd6;">return</span> id; }
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">setId</span>(<span style="color:#569cd6;">int</span> id) { <span style="color:#569cd6;">this</span>.id = id; }
+
+    <span style="color:#569cd6;">public</span> <span style="color:#4ec9b0;">String</span> <span style="color:#dcdcaa;">getStudentName</span>() { <span style="color:#569cd6;">return</span> studentName; }
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">setStudentName</span>(<span style="color:#4ec9b0;">String</span> studentName) { <span style="color:#569cd6;">this</span>.studentName = studentName; }
+
+    <span style="color:#569cd6;">public</span> <span style="color:#4ec9b0;">String</span> <span style="color:#dcdcaa;">getCourse</span>() { <span style="color:#569cd6;">return</span> course; }
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">setCourse</span>(<span style="color:#4ec9b0;">String</span> course) { <span style="color:#569cd6;">this</span>.course = course; }
+
+    <span style="color:#569cd6;">public</span> <span style="color:#4ec9b0;">String</span> <span style="color:#dcdcaa;">getFacultyName</span>() { <span style="color:#569cd6;">return</span> facultyName; }
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">setFacultyName</span>(<span style="color:#4ec9b0;">String</span> facultyName) { <span style="color:#569cd6;">this</span>.facultyName = facultyName; }
+
+    <span style="color:#569cd6;">public</span> <span style="color:#4ec9b0;">String</span> <span style="color:#dcdcaa;">getFeedbackText</span>() { <span style="color:#569cd6;">return</span> feedbackText; }
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">setFeedbackText</span>(<span style="color:#4ec9b0;">String</span> feedbackText) { <span style="color:#569cd6;">this</span>.feedbackText = feedbackText; }
+
+    <span style="color:#569cd6;">public int</span> <span style="color:#dcdcaa;">getRating</span>() { <span style="color:#569cd6;">return</span> rating; }
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">setRating</span>(<span style="color:#569cd6;">int</span> rating) { <span style="color:#569cd6;">this</span>.rating = rating; }
+
+    <span style="color:#569cd6;">public</span> <span style="color:#4ec9b0;">String</span> <span style="color:#dcdcaa;">getSubmittedAt</span>() { <span style="color:#569cd6;">return</span> submittedAt; }
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">setSubmittedAt</span>(<span style="color:#4ec9b0;">String</span> submittedAt) { <span style="color:#569cd6;">this</span>.submittedAt = submittedAt; }
+}
+</code></pre>
+        </div>
+
+        <!-- 2. FeedbackDAO.java (Data Access Object) -->
+        <div class="code-accordion-header" onclick="toggleCode('exp10DaoCode', 'exp10DaoIcon')">
+            <span>&#128196; 2. Data Access Object: FeedbackDAO.java</span>
+            <span id="exp10DaoIcon">&#9660; Click to Expand</span>
+        </div>
+        <div id="exp10DaoCode" class="code-accordion-content">
+<pre style="margin:0;"><code style="color:#d4d4d4;"><span style="color:#6a9955;">/**
+ * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
+ * Module: Experiment 10 - Feedback Data Access Object
+ * Description: Handles SQL queries, dynamic faculty/course filtering, and JDBC persistence.
+ */</span>
+<span style="color:#569cd6;">package</span> <span style="color:#4ec9b0;">com.javalab.dao</span>;
+
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">com.javalab.db.DBConnection</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">com.javalab.model.Feedback</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">com.javalab.util.PortalHelper</span>;
+
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.sql.*</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.util.ArrayList</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.util.List</span>;
+
+<span style="color:#569cd6;">public class</span> <span style="color:#4ec9b0;">FeedbackDAO</span> {
+
+    <span style="color:#569cd6;">public void</span> <span style="color:#dcdcaa;">addFeedback</span>(<span style="color:#4ec9b0;">Feedback</span> feedback) <span style="color:#569cd6;">throws</span> <span style="color:#4ec9b0;">SQLException</span> {
+        <span style="color:#569cd6;">if</span> (feedback == <span style="color:#569cd6;">null</span>) <span style="color:#569cd6;">return</span>;
+        <span style="color:#4ec9b0;">String</span> sql = <span style="color:#ce9178;">"INSERT INTO feedback (student_name, course, faculty_name, feedback_text, rating) VALUES (?, ?, ?, ?, ?)"</span>;
+        <span style="color:#569cd6;">try</span> (<span style="color:#4ec9b0;">Connection</span> con = <span style="color:#4ec9b0;">DBConnection</span>.<span style="color:#dcdcaa;">getConnection</span>();
+             <span style="color:#4ec9b0;">PreparedStatement</span> ps = con.<span style="color:#dcdcaa;">prepareStatement</span>(sql)) {
+            ps.<span style="color:#dcdcaa;">setString</span>(1, <span style="color:#4ec9b0;">PortalHelper</span>.<span style="color:#dcdcaa;">cleanInput</span>(feedback.<span style="color:#dcdcaa;">getStudentName</span>()));
+            ps.<span style="color:#dcdcaa;">setString</span>(2, <span style="color:#4ec9b0;">PortalHelper</span>.<span style="color:#dcdcaa;">cleanInput</span>(feedback.<span style="color:#dcdcaa;">getCourse</span>()));
+            ps.<span style="color:#dcdcaa;">setString</span>(3, <span style="color:#4ec9b0;">PortalHelper</span>.<span style="color:#dcdcaa;">cleanInput</span>(feedback.<span style="color:#dcdcaa;">getFacultyName</span>()));
+            ps.<span style="color:#dcdcaa;">setString</span>(4, <span style="color:#4ec9b0;">PortalHelper</span>.<span style="color:#dcdcaa;">cleanInput</span>(feedback.<span style="color:#dcdcaa;">getFeedbackText</span>()));
+            ps.<span style="color:#dcdcaa;">setInt</span>(5, feedback.<span style="color:#dcdcaa;">getRating</span>());
+            ps.<span style="color:#dcdcaa;">executeUpdate</span>();
+        }
+    }
+
+    <span style="color:#569cd6;">public</span> <span style="color:#4ec9b0;">List</span>&lt;<span style="color:#4ec9b0;">Feedback</span>&gt; <span style="color:#dcdcaa;">searchFeedback</span>(<span style="color:#4ec9b0;">String</span> facultyQuery, <span style="color:#4ec9b0;">String</span> courseQuery, <span style="color:#4ec9b0;">Integer</span> ratingFilter) <span style="color:#569cd6;">throws</span> <span style="color:#4ec9b0;">SQLException</span> {
+        <span style="color:#4ec9b0;">List</span>&lt;<span style="color:#4ec9b0;">Feedback</span>&gt; list = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">ArrayList</span>&lt;&gt;();
+        <span style="color:#4ec9b0;">StringBuilder</span> sql = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">StringBuilder</span>(<span style="color:#ce9178;">"SELECT id, student_name, course, faculty_name, feedback_text, rating, submitted_at FROM feedback WHERE 1=1 "</span>);
+        <span style="color:#4ec9b0;">List</span>&lt;<span style="color:#4ec9b0;">Object</span>&gt; params = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">ArrayList</span>&lt;&gt;();
+
+        <span style="color:#569cd6;">if</span> (facultyQuery != <span style="color:#569cd6;">null</span> &amp;&amp; !facultyQuery.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">isEmpty</span>()) {
+            sql.<span style="color:#dcdcaa;">append</span>(<span style="color:#ce9178;">"AND LOWER(faculty_name) LIKE ? "</span>);
+            params.<span style="color:#dcdcaa;">add</span>(<span style="color:#ce9178;">"%"</span> + facultyQuery.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">toLowerCase</span>() + <span style="color:#ce9178;">"%"</span>);
+        }
+        <span style="color:#569cd6;">if</span> (courseQuery != <span style="color:#569cd6;">null</span> &amp;&amp; !courseQuery.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">isEmpty</span>()) {
+            sql.<span style="color:#dcdcaa;">append</span>(<span style="color:#ce9178;">"AND LOWER(course) LIKE ? "</span>);
+            params.<span style="color:#dcdcaa;">add</span>(<span style="color:#ce9178;">"%"</span> + courseQuery.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">toLowerCase</span>() + <span style="color:#ce9178;">"%"</span>);
+        }
+        <span style="color:#569cd6;">if</span> (ratingFilter != <span style="color:#569cd6;">null</span> &amp;&amp; ratingFilter &gt; 0) {
+            sql.<span style="color:#dcdcaa;">append</span>(<span style="color:#ce9178;">"AND rating = ? "</span>);
+            params.<span style="color:#dcdcaa;">add</span>(ratingFilter);
+        }
+        sql.<span style="color:#dcdcaa;">append</span>(<span style="color:#ce9178;">"ORDER BY id DESC"</span>);
+
+        <span style="color:#569cd6;">try</span> (<span style="color:#4ec9b0;">Connection</span> con = <span style="color:#4ec9b0;">DBConnection</span>.<span style="color:#dcdcaa;">getConnection</span>();
+             <span style="color:#4ec9b0;">PreparedStatement</span> ps = con.<span style="color:#dcdcaa;">prepareStatement</span>(sql.<span style="color:#dcdcaa;">toString</span>())) {
+            <span style="color:#569cd6;">for</span> (<span style="color:#569cd6;">int</span> i = 0; i &lt; params.<span style="color:#dcdcaa;">size</span>(); i++) {
+                ps.<span style="color:#dcdcaa;">setObject</span>(i + 1, params.<span style="color:#dcdcaa;">get</span>(i));
+            }
+            <span style="color:#569cd6;">try</span> (<span style="color:#4ec9b0;">ResultSet</span> rs = ps.<span style="color:#dcdcaa;">executeQuery</span>()) {
+                <span style="color:#569cd6;">while</span> (rs.<span style="color:#dcdcaa;">next</span>()) {
+                    <span style="color:#4ec9b0;">Feedback</span> f = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">Feedback</span>(
+                        rs.<span style="color:#dcdcaa;">getInt</span>(<span style="color:#ce9178;">"id"</span>),
+                        rs.<span style="color:#dcdcaa;">getString</span>(<span style="color:#ce9178;">"student_name"</span>),
+                        rs.<span style="color:#dcdcaa;">getString</span>(<span style="color:#ce9178;">"course"</span>),
+                        rs.<span style="color:#dcdcaa;">getString</span>(<span style="color:#ce9178;">"faculty_name"</span>),
+                        rs.<span style="color:#dcdcaa;">getString</span>(<span style="color:#ce9178;">"feedback_text"</span>),
+                        rs.<span style="color:#dcdcaa;">getInt</span>(<span style="color:#ce9178;">"rating"</span>)
+                    );
+                    <span style="color:#4ec9b0;">Timestamp</span> ts = rs.<span style="color:#dcdcaa;">getTimestamp</span>(<span style="color:#ce9178;">"submitted_at"</span>);
+                    <span style="color:#569cd6;">if</span> (ts != <span style="color:#569cd6;">null</span>) f.<span style="color:#dcdcaa;">setSubmittedAt</span>(ts.<span style="color:#dcdcaa;">toString</span>());
+                    list.<span style="color:#dcdcaa;">add</span>(f);
+                }
+            }
+        }
+        <span style="color:#569cd6;">return</span> list;
+    }
+}
+</code></pre>
+        </div>
+
+        <!-- 3. FeedbackServlet.java (Controller Servlet) -->
+        <div class="code-accordion-header" onclick="toggleCode('exp10ServletCode', 'exp10ServletIcon')">
+            <span>&#128196; 3. Controller Servlet: FeedbackServlet.java</span>
+            <span id="exp10ServletIcon">&#9660; Click to Expand</span>
+        </div>
+        <div id="exp10ServletCode" class="code-accordion-content">
+<pre style="margin:0;"><code style="color:#d4d4d4;"><span style="color:#6a9955;">/**
+ * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
+ * Module: Experiment 10 - Feedback Controller Servlet
+ * Description: Manages role-based authentication, student submission privacy, single-device session validation, and faculty CSV export.
+ */</span>
+<span style="color:#569cd6;">package</span> <span style="color:#4ec9b0;">com.javalab.servlet</span>;
+
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">com.javalab.dao.FeedbackDAO</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">com.javalab.model.Feedback</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">com.javalab.util.ActiveSessionManager</span>;
+
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">javax.servlet.ServletException</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">javax.servlet.annotation.WebServlet</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">javax.servlet.http.*</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.io.IOException</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.io.PrintWriter</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.sql.SQLException</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.util.List</span>;
+
+<span style="color:#569cd6;">@WebServlet</span>(<span style="color:#ce9178;">"/FeedbackServlet"</span>)
+<span style="color:#569cd6;">public class</span> <span style="color:#4ec9b0;">FeedbackServlet</span> <span style="color:#569cd6;">extends</span> <span style="color:#4ec9b0;">HttpServlet</span> {
+
+    <span style="color:#569cd6;">private final</span> <span style="color:#4ec9b0;">FeedbackDAO</span> feedbackDAO = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">FeedbackDAO</span>();
+
+    <span style="color:#569cd6;">@Override</span>
+    <span style="color:#569cd6;">protected void</span> <span style="color:#dcdcaa;">doPost</span>(<span style="color:#4ec9b0;">HttpServletRequest</span> request, <span style="color:#4ec9b0;">HttpServletResponse</span> response)
+            <span style="color:#569cd6;">throws</span> <span style="color:#4ec9b0;">ServletException</span>, <span style="color:#4ec9b0;">IOException</span> {
+        <span style="color:#4ec9b0;">String</span> action = request.<span style="color:#dcdcaa;">getParameter</span>(<span style="color:#ce9178;">"action"</span>);
+
+        <span style="color:#6a9955;">// Student Submits Course Feedback (Privacy Protected)</span>
+        <span style="color:#569cd6;">if</span> (<span style="color:#ce9178;">"submit"</span>.<span style="color:#dcdcaa;">equals</span>(action)) {
+            <span style="color:#4ec9b0;">Feedback</span> fb = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">Feedback</span>();
+            fb.<span style="color:#dcdcaa;">setStudentName</span>(request.<span style="color:#dcdcaa;">getParameter</span>(<span style="color:#ce9178;">"studentName"</span>));
+            fb.<span style="color:#dcdcaa;">setCourse</span>(request.<span style="color:#dcdcaa;">getParameter</span>(<span style="color:#ce9178;">"course"</span>));
+            fb.<span style="color:#dcdcaa;">setFacultyName</span>(request.<span style="color:#dcdcaa;">getParameter</span>(<span style="color:#ce9178;">"facultyName"</span>));
+            fb.<span style="color:#dcdcaa;">setFeedbackText</span>(request.<span style="color:#dcdcaa;">getParameter</span>(<span style="color:#ce9178;">"feedbackText"</span>));
+            fb.<span style="color:#dcdcaa;">setRating</span>(<span style="color:#4ec9b0;">Integer</span>.<span style="color:#dcdcaa;">parseInt</span>(request.<span style="color:#dcdcaa;">getParameter</span>(<span style="color:#ce9178;">"rating"</span>)));
+
+            <span style="color:#569cd6;">try</span> {
+                feedbackDAO.<span style="color:#dcdcaa;">addFeedback</span>(fb);
+                <span style="color:#6a9955;">// Redirect student back with success status - student NEVER sees feedback list!</span>
+                response.<span style="color:#dcdcaa;">sendRedirect</span>(<span style="color:#ce9178;">"feedback.jsp?submitted=true&amp;msg=Feedback+recorded+successfully!"</span>);
+            } <span style="color:#569cd6;">catch</span> (<span style="color:#4ec9b0;">SQLException</span> e) {
+                response.<span style="color:#dcdcaa;">sendRedirect</span>(<span style="color:#ce9178;">"feedback.jsp?error=Database+Error:+"</span> + e.<span style="color:#dcdcaa;">getMessage</span>());
+            }
+            <span style="color:#569cd6;">return</span>;
+        }
+
+        <span style="color:#6a9955;">// Teacher One-Click CSV Export</span>
+        <span style="color:#569cd6;">if</span> (<span style="color:#ce9178;">"export_csv"</span>.<span style="color:#dcdcaa;">equals</span>(action)) {
+            response.<span style="color:#dcdcaa;">setContentType</span>(<span style="color:#ce9178;">"text/csv; charset=UTF-8"</span>);
+            response.<span style="color:#dcdcaa;">setHeader</span>(<span style="color:#ce9178;">"Content-Disposition"</span>, <span style="color:#ce9178;">"attachment; filename=\"Faculty_Feedback_Report.csv\""</span>);
+            <span style="color:#4ec9b0;">PrintWriter</span> out = response.<span style="color:#dcdcaa;">getWriter</span>();
+            out.<span style="color:#dcdcaa;">println</span>(<span style="color:#ce9178;">"ID,Student Name,Subject / Course,Faculty Name,Rating,Feedback Comments,Submitted At"</span>);
+            <span style="color:#6a9955;">// stream CSV data...</span>
+            <span style="color:#569cd6;">return</span>;
+        }
+    }
+}
+</code></pre>
+        </div>
+
+        <!-- 4. ActiveSessionManager.java (Single-Device Session Lock) -->
+        <div class="code-accordion-header" onclick="toggleCode('exp10SessionCode', 'exp10SessionIcon')">
+            <span>&#128196; 4. Single-Device Session Security: ActiveSessionManager.java</span>
+            <span id="exp10SessionIcon">&#9660; Click to Expand</span>
+        </div>
+        <div id="exp10SessionCode" class="code-accordion-content">
+<pre style="margin:0;"><code style="color:#d4d4d4;"><span style="color:#6a9955;">/**
+ * Project: Java Lab Portal (RTU 5th Sem Practical Lab)
+ * Module: Security Layer - Concurrent Session Control
+ * Description: Prevents simultaneous logins for the same student across different devices/browsers.
+ */</span>
+<span style="color:#569cd6;">package</span> <span style="color:#4ec9b0;">com.javalab.util</span>;
+
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.util.Map</span>;
+<span style="color:#569cd6;">import</span> <span style="color:#4ec9b0;">java.util.concurrent.ConcurrentHashMap</span>;
+
+<span style="color:#569cd6;">public class</span> <span style="color:#4ec9b0;">ActiveSessionManager</span> {
+
+    <span style="color:#6a9955;">// Thread-safe map tracking: Roll Number -&gt; Active Session ID</span>
+    <span style="color:#569cd6;">private static final</span> <span style="color:#4ec9b0;">Map</span>&lt;<span style="color:#4ec9b0;">String</span>, <span style="color:#4ec9b0;">String</span>&gt; activeStudentSessions = <span style="color:#569cd6;">new</span> <span style="color:#4ec9b0;">ConcurrentHashMap</span>&lt;&gt;();
+
+    <span style="color:#569cd6;">public static synchronized boolean</span> <span style="color:#dcdcaa;">isAlreadyLoggedIn</span>(<span style="color:#4ec9b0;">String</span> rollNumber, <span style="color:#4ec9b0;">String</span> currentSessionId) {
+        <span style="color:#569cd6;">if</span> (rollNumber == <span style="color:#569cd6;">null</span> || rollNumber.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">isEmpty</span>()) <span style="color:#569cd6;">return false</span>;
+        <span style="color:#4ec9b0;">String</span> key = rollNumber.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">toUpperCase</span>();
+        <span style="color:#4ec9b0;">String</span> existingSession = activeStudentSessions.<span style="color:#dcdcaa;">get</span>(key);
+        <span style="color:#569cd6;">return</span> existingSession != <span style="color:#569cd6;">null</span> &amp;&amp; !existingSession.<span style="color:#dcdcaa;">equals</span>(currentSessionId);
+    }
+
+    <span style="color:#569cd6;">public static synchronized void</span> <span style="color:#dcdcaa;">registerLogin</span>(<span style="color:#4ec9b0;">String</span> rollNumber, <span style="color:#4ec9b0;">String</span> sessionId) {
+        <span style="color:#569cd6;">if</span> (rollNumber != <span style="color:#569cd6;">null</span> &amp;&amp; sessionId != <span style="color:#569cd6;">null</span>) {
+            activeStudentSessions.<span style="color:#dcdcaa;">put</span>(rollNumber.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">toUpperCase</span>(), sessionId);
+        }
+    }
+
+    <span style="color:#569cd6;">public static synchronized void</span> <span style="color:#dcdcaa;">removeLogin</span>(<span style="color:#4ec9b0;">String</span> rollNumber) {
+        <span style="color:#569cd6;">if</span> (rollNumber != <span style="color:#569cd6;">null</span>) {
+            activeStudentSessions.<span style="color:#dcdcaa;">remove</span>(rollNumber.<span style="color:#dcdcaa;">trim</span>().<span style="color:#dcdcaa;">toUpperCase</span>());
+        }
+    }
+}
+</code></pre>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -651,6 +950,19 @@
             fac.value = 'Er. Ram Babu Buri';
         }
     }
+
+    function toggleCode(id, iconId) {
+        var el = document.getElementById(id);
+        var icon = document.getElementById(iconId);
+        if (el.style.display === 'block') {
+            el.style.display = 'none';
+            icon.innerText = '\u25BC Click to Expand';
+        } else {
+            el.style.display = 'block';
+            icon.innerText = '\u25B2 Click to Collapse';
+        }
+    }
+
 </script>
 
 <%@ include file="footer.jspf" %>
