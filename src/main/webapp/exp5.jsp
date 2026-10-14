@@ -34,7 +34,7 @@
 
 <div style="background:white; border:2px solid #333; border-radius:8px; padding:20px; margin-bottom:24px; box-shadow:0 4px 14px rgba(0,0,0,0.1);">
     <h3 style="text-align:center; color:#222; font-size:20px; margin-top:0; border-bottom:2px solid #eee; padding-bottom:10px;">
-        Employee Registration By - Krishna Gupta
+        Employee Registration Desk
     </h3>
 
     <div style="display:flex; gap:24px; flex-wrap:wrap;">
@@ -155,7 +155,7 @@ public class EmployeeCRUD extends JFrame {
         setResizable(false);
 
         // Title
-        titleLabel = new JLabel("Employee Registration By - Krishna Gupta");
+        titleLabel = new JLabel("Employee Registration Desk");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setBounds(390, 20, 550, 40);
         add(titleLabel);
@@ -442,7 +442,7 @@ public class EmployeeCRUD extends JFrame {
             con = DriverManager.getConnection(
                     "jdbc:mysql://localhost:3306/employee_db",
                     "root",
-                    "#MySQL4#"
+                    "your_password"
             );
 
             System.out.println("Database Connected Successfully");

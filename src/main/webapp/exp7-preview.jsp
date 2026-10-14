@@ -5,7 +5,7 @@
 
 <div style="max-width:440px; border-radius:8px; overflow:hidden; box-shadow:0 3px 12px rgba(0,0,0,0.15); border:1px solid #ccc; margin-bottom:20px;">
     <div style="background:#3b5998; color:white; padding:14px 18px;">
-        <div style="font-weight:bold; font-size:16px;">Experiment 7 - RMI Calculator by Krishna Gupta</div>
+        <div style="font-weight:bold; font-size:16px;">Experiment 7 - RMI Calculator</div>
         <div style="font-size:12px; color:#dde1f5;">Remote Interface: calculator | Registry: rmi://localhost/CalculatorService</div>
     </div>
     <div style="background:#ebf0f9; padding:20px;">
@@ -67,7 +67,7 @@ public class CalculatorClient extends JFrame {
 
     public CalculatorClient() {
 
-        setTitle("Experiment 7 - RMI Calculator by Krishna Gupta");
+        setTitle("Experiment 7 - RMI Calculator");
         setSize(480, 420);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -86,7 +86,7 @@ public class CalculatorClient extends JFrame {
         titleLabel.setFont(new Font("Arial", Font.BOLD, 16));
         titleLabel.setAlignmentX(Component.LEFT_ALIGNMENT);
 
-        JLabel nameLabel = new JLabel("by Krishna Gupta");
+        JLabel nameLabel = new JLabel("Distributed RMI Calculator");
         nameLabel.setForeground(new Color(220, 225, 245));
         nameLabel.setFont(new Font("Arial", Font.ITALIC, 13));
         nameLabel.setAlignmentX(Component.LEFT_ALIGNMENT);

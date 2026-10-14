@@ -24,7 +24,7 @@
 <% } %>
 
 <form method="post" action="exp1.jsp" style="border:2px solid #e53935; background:#ffe4ec; max-width:480px; padding:22px; border-radius:6px; box-shadow:0 3px 12px rgba(229,57,53,0.15);">
-    <p style="text-align:center; font-weight:bold; font-size:16px; margin:0 0 16px 0; color:#b71c1c;">By - Krishna Gupta (24EARAD083)</p>
+    
 
     <label style="font-weight:600;">Student Name</label>
     <input type="text" name="name" required placeholder="Enter student name">
@@ -81,7 +81,7 @@ public class exp_01 {
       panel.setBorder(border);
       panel.setBackground(Color.PINK);
 
-      JLabel heading = new JLabel("By - Krishna Gupta (24EARAD083)");
+      JLabel heading = new JLabel("Student Registration Form");
       heading.setFont(new Font("Arial", Font.BOLD, 14));
       heading.setBounds(85, 30, 250, 25);
       panel.add(heading);

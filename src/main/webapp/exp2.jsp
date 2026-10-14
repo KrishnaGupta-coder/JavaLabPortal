@@ -26,7 +26,7 @@
 
 <form method="post" action="exp2.jsp" style="background:#b41919; padding:22px; border-radius:8px; max-width:540px; box-shadow:0 4px 14px rgba(180,25,25,0.25);">
     <input type="hidden" name="submitted" value="yes">
-    <p style="text-align:center; color:white; font-weight:bold; font-size:18px; margin:0 0 18px 0;">Selection Form by Krishna Gupta</p>
+    <p style="text-align:center; color:white; font-weight:bold; font-size:18px; margin:0 0 18px 0;">User Selection Form</p>
 
     <label style="color:white; font-weight:bold;">Hobbies:</label>
     <div style="margin-bottom:14px;">
@@ -101,7 +101,7 @@ public class exp_02 {
 
       panel.setBorder(border);
 
-      JLabel heading = new JLabel("Selection Form by Krishna Gupta");
+      JLabel heading = new JLabel("User Selection Form");
       heading.setBounds(150, 15, 420, 35);
       heading.setForeground(Color.WHITE);
       heading.setFont(new Font("Arial", Font.BOLD, 20));

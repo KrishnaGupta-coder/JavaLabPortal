@@ -11,7 +11,7 @@
 %>
 
 <div style="max-width:340px; background:#f5f5f5; border-radius:8px; padding:18px; box-shadow:0 3px 12px rgba(0,0,0,0.15); border:1px solid #ccc;">
-    <p style="text-align:center; font-weight:bold; color:#333; margin:0 0 6px 0;">Created by: Krishna Gupta</p>
+    
     <div id="exprLine" style="text-align:right; color:#777; font-size:13px; min-height:18px; margin-bottom:4px;"></div>
     <input id="display" type="text" readonly value="<%= result %>"
            style="width:100%; box-sizing:border-box; font-size:22px; font-weight:bold; text-align:right;
@@ -79,7 +79,7 @@ public class CalculatorView extends JFrame {
         this.setResizable(false);
         this.setLocationRelativeTo(null);
 
-        nameLabel = new JLabel("Created by: krishna Gupta", SwingConstants.CENTER);
+        nameLabel = new JLabel("MVC Architecture Calculator", SwingConstants.CENTER);
         nameLabel.setBounds(25, 10, 295, 20);
         nameLabel.setFont(new Font("Arial", Font.BOLD, 14));
         nameLabel.setForeground(Color.DARK_GRAY);

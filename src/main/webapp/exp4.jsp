@@ -24,7 +24,7 @@
     function resetLabel() {
         ctx.fillStyle = 'black';
         ctx.font = '20px Arial';
-        ctx.fillText('Run by Krishna Gupta', 40, 30);
+        ctx.fillText('2D Shapes Graphics Demo', 40, 30);
     }
     resetLabel();
 
