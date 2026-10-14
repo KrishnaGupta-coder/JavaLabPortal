@@ -711,7 +711,7 @@ The JavaLabPortal web frontend is crafted using accessible HTML5, custom Bootstr
 </p>
 
 #### B. Teacher Administration Command Dashboard (`index.jsp`)
-* Master faculty portal featuring authenticated user telemetry (`Krishna Gupta TEACHER`), administrative navigation links, and modular shortcuts for student management, class batches, theory authoring, and experiment deployment.
+* Master faculty portal featuring authenticated user telemetry (`Ram Babu Buri TEACHER`), administrative navigation links, and modular shortcuts for student management, class batches, theory authoring, and experiment deployment.
 <p align="center">
   <img src="docs/screenshots/ui_teacher_dashboard.png" alt="Teacher Administration Dashboard" width="95%" />
 </p>

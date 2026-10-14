@@ -31,16 +31,32 @@ public class TeacherDAO {
 
         try {
             con = DBConnection.getConnection();
+
+            // Auto-synchronize default teacher record to Er. Ram Babu Buri
+            if ("teacher".equalsIgnoreCase(username.trim())) {
+                try (PreparedStatement updatePs = con.prepareStatement(
+                        "UPDATE teacher SET name = 'Ram Babu Buri' WHERE username = 'teacher' AND name != 'Ram Babu Buri'")) {
+                    updatePs.executeUpdate();
+                } catch (Exception ignored) {
+                }
+            }
+
             ps = con.prepareStatement(SQL_FIND_TEACHER);
             ps.setString(1, username.trim());
             rs = ps.executeQuery();
 
             if (rs.next()) {
+                String teacherName = rs.getString("name");
+                if ("teacher".equalsIgnoreCase(username.trim()) && 
+                    (teacherName == null || teacherName.isEmpty() || "Krishna Gupta".equalsIgnoreCase(teacherName))) {
+                    teacherName = "Ram Babu Buri";
+                }
+
                 return new Teacher(
                         rs.getInt("id"),
                         rs.getString("username"),
                         rs.getString("password"),
-                        rs.getString("name")
+                        teacherName
                 );
             }
         } finally {
@@ -49,4 +65,3 @@ public class TeacherDAO {
         return null;
     }
 }
-

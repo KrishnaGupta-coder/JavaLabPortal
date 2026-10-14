@@ -23,7 +23,7 @@ CREATE TABLE teacher (
 );
 
 INSERT INTO teacher (username, password, name) VALUES
-    ('teacher', 'teacher123', 'Krishna Gupta');
+    ('teacher', 'teacher123', 'Ram Babu Buri');
 
 -- Table: class_section
 CREATE TABLE class_section (
