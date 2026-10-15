@@ -3,6 +3,7 @@
 [![Live Demo](https://img.shields.io/badge/Live_Demo-Railway_Cloud-00C7B7?style=for-the-badge&logo=railway)](https://javalabportal-production.up.railway.app)
 [![Docker](https://img.shields.io/badge/Docker-Tomcat_9-2496ED?style=for-the-badge&logo=docker)](https://github.com/KrishnaGupta-coder/JavaLabPortal)
 [![Database](https://img.shields.io/badge/MySQL_8.0-Cloud_Database-4479A1?style=for-the-badge&logo=mysql)](https://github.com/KrishnaGupta-coder/JavaLabPortal)
+[![Demo Video](https://img.shields.io/badge/Demo_Video-Google_Drive-FF7043?style=for-the-badge&logo=googledrive)](https://drive.google.com/file/d/1GSwDPuGFLq4r_HP4JWs3-ddCpBIcAcdp/view?usp=drivesdk)
 
 > 🚀 **Live Production Deployment:** [https://javalabportal-production.up.railway.app](https://javalabportal-production.up.railway.app)
 
@@ -1121,7 +1122,7 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
 | 📄 **Final Project Report** | Comprehensive B.Tech Project Report covering Project Overview, Literature Survey, System Design, Implementation, Testing Results, and Conclusion | [View Project Report (PDF)](https://drive.google.com/file/d/1uKg6H8RLfPDOdjz9TgR-_LV6oGCSaM8b/view?usp=sharing) |
 | 📑 **IEEE Research Paper** | Scholarly IEEE Research Paper covering Literature Gap Analysis (38 Papers), 3-Tier MVC Architecture, Concurrency Benchmarks & SUS Usability Evaluation | [View Research Paper (PDF)](https://drive.google.com/file/d/1n4yjgoqvqT66Llvaa7mB8FnxWfuevuf8/view?usp=sharing) |
 | 📊 **Presentation Deck (PPT)** | 20-Slide B.Tech Final Evaluation Deck covering 3-Tier MVC Architecture, RBAC Security, Database Design & Testing Results | [View Presentation (Slides)](https://drive.google.com/file/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/view?usp=sharing) \| [Download .PPTX](https://docs.google.com/presentation/d/11vdyoUfCRMATKw1gJbim2QBynpZQQJ83/export/pptx) |
-| 🎥 **Video Demonstration** | HD Video Walkthrough of JavaLabPortal (Student Workflow, Teacher Admin Panel, Experiment Simulators & Feedback System) | [Watch Video Demonstration (YouTube)](https://www.youtube.com/watch?v=your-demo-video-id) |
+| 🎥 **Video Demonstration** | HD Video Walkthrough of JavaLabPortal (Student Workflow, Teacher Admin Panel, Experiment Simulators & Feedback System) | [Watch Video Demonstration (Google Drive)](https://drive.google.com/file/d/1GSwDPuGFLq4r_HP4JWs3-ddCpBIcAcdp/view?usp=drivesdk) |
 
 ---
 
@@ -1148,6 +1149,7 @@ During **Week 10**, the JavaLabPortal engineering team completed the final syste
   * **Student Lab Journey:** Executing lab experiments, reading theory, running calculator tests, and submitting feedback.
   * **Teacher Admin Panel:** Creating and updating student accounts, managing class batches, and reviewing student feedback.
   * **Security Enforcement:** Live demonstration of unauthorized URL blocking and secure session logout.
+* **Watch Full Demonstration:** [Google Drive HD Video Walkthrough](https://drive.google.com/file/d/1GSwDPuGFLq4r_HP4JWs3-ddCpBIcAcdp/view?usp=drivesdk)
 
 #### 4. Peer-Reviewed IEEE Research Paper
 * Authored the full-length IEEE research paper titled **"JavaLabPortal: An Enterprise 3-Tier Web-Based Practical Learning, Laboratory Automation, and Examination Platform for Advanced Java Education"**:
